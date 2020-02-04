@@ -4,31 +4,32 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Task1
 {
     public class euclideanAlgorithm
     {
-        public static void GDC(int a, int b)
+        public static int GDC(int a, int b)
         {
-            int NOD;
+            int nod;
+
             int temp = a;
-            int q = 0;
+
+            int currentStep = 0;
+
             while (temp != 0)
             {
-
                 if (temp >= b)
                 {
                     temp = temp - b;
-                    q++;
+                    currentStep++;
                 }
-
                 else
                 {
-                    NOD = q * b + temp;
+                    nod = currentStep * b + temp;
                     b = temp;
-                    temp = NOD;
-                    q = 0;
+                    temp = nod;
+                    currentStep = 0;
                 }
             }
 
-            Console.WriteLine("Наибольший общий делитель: " + b);
+            return b;
 
-        } // task 1
+        }
     }
 }

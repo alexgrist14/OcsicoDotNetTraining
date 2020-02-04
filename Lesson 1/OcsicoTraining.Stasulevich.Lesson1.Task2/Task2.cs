@@ -4,40 +4,42 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Task2
 {
     public class BinarySearch
     {
-        public static int BinaryGCD(int u, int v)
+        public static int BinaryGCD(int a, int b)
         {
-            int shift = 0;
-            if (u == 0) return v;
-            if (v == 0) return u;
+            var shift = 0;
+            if (a == 0) return b;
+            if (b == 0) return a;
 
-            while (((u | v) & 1) == 0)
+            while (((a | b) & 1) == 0)
             {
                 shift++;
-                u >>= 1;
-                v >>= 1;
+                a >>= 1;
+                b >>= 1;
             }
 
-            while ((u & 1) == 0)
+            while ((a & 1) == 0)
             {
-                u >>= 1;
+                a >>= 1;
             }
 
             do
             {
-                while ((v & 1) == 0)
+                while ((b & 1) == 0)
                 {
-                    v >>= 1;
+                    b >>= 1;
                 }
 
-                if (u > v)
+                if (a > b)
                 {
-                    int t = v; v = u; u = t;
+                    var t = b; 
+                    b = a; 
+                    a = t;
                 }
 
-                v -= u;
-            } while (v != 0);
+                b -= a;
+            } while (b != 0);
 
-            return u << shift;
+            return a << shift;
         }
     }
 }

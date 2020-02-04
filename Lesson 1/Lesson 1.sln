@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson1", "Lesson1", "{04AD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.Task1", "OcsicoTraining.Stasulevich.Lesson1.Task1\OcsicoTraining.Stasulevich.Lesson1.Task1.csproj", "{5A63BEC6-A6D6-4DF6-8087-107873F92AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson1.Presentation", "OcsicoTraining.Stasulevich.Lesson1.Presentation\OcsicoTraining.Stasulevich.Lesson1.Presentation.csproj", "{F283FA73-465C-49E0-875B-3A3031178B6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.Presentation", "OcsicoTraining.Stasulevich.Lesson1.Presentation\OcsicoTraining.Stasulevich.Lesson1.Presentation.csproj", "{F283FA73-465C-49E0-875B-3A3031178B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson1.Task2", "OcsicoTraining.Stasulevich.Lesson1.Task2\OcsicoTraining.Stasulevich.Lesson1.Task2.csproj", "{A34A2924-A5EB-42D2-9B8C-8797A501CEBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.Task2", "OcsicoTraining.Stasulevich.Lesson1.Task2\OcsicoTraining.Stasulevich.Lesson1.Task2.csproj", "{A34A2924-A5EB-42D2-9B8C-8797A501CEBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OscicoTraining.Stasulevich.Lesson1.Task3", "OscicoTraining.Stasulevich.Lesson1.Task3\OscicoTraining.Stasulevich.Lesson1.Task3.csproj", "{E2BB5C7C-65E8-437A-B9F8-4489F0110F04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OscicoTraining.Stasulevich.Lesson1.Task3", "OscicoTraining.Stasulevich.Lesson1.Task3\OscicoTraining.Stasulevich.Lesson1.Task3.csproj", "{E2BB5C7C-65E8-437A-B9F8-4489F0110F04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
