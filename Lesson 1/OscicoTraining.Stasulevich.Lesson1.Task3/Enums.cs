@@ -14,5 +14,4 @@ namespace enums
         Max,
         Min
     }
-
 }

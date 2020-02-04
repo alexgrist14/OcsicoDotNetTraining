@@ -7,9 +7,7 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Task1
         public static int GDC(int a, int b)
         {
             int nod;
-
             int temp = a;
-
             int currentStep = 0;
 
             while (temp != 0)
@@ -29,7 +27,6 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Task1
             }
 
             return b;
-
         }
     }
 }

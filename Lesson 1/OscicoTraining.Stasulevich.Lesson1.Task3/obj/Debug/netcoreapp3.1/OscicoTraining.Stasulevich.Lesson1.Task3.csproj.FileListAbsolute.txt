@@ -5,3 +5,4 @@ E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OscicoTraining.Stasulevich.Lesson1.Task
 E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OscicoTraining.Stasulevich.Lesson1.Task3\obj\Debug\netcoreapp3.1\OscicoTraining.Stasulevich.Lesson1.Task3.AssemblyInfo.cs
 E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OscicoTraining.Stasulevich.Lesson1.Task3\obj\Debug\netcoreapp3.1\OscicoTraining.Stasulevich.Lesson1.Task3.dll
 E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OscicoTraining.Stasulevich.Lesson1.Task3\obj\Debug\netcoreapp3.1\OscicoTraining.Stasulevich.Lesson1.Task3.pdb
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OscicoTraining.Stasulevich.Lesson1.Task3\obj\Debug\netcoreapp3.1\OscicoTraining.Stasulevich.Lesson1.Task3.csprojAssemblyReference.cache

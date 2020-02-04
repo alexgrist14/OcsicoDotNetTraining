@@ -7,6 +7,7 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Task2
         public static int BinaryGCD(int a, int b)
         {
             var shift = 0;
+
             if (a == 0) return b;
             if (b == 0) return a;
 
