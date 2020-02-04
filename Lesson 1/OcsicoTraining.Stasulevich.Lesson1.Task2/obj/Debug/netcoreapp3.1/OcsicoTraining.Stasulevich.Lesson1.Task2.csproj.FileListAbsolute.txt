@@ -1,0 +1,8 @@
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\bin\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.deps.json
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\bin\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.dll
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\bin\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.pdb
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\obj\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.csprojAssemblyReference.cache
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\obj\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.AssemblyInfoInputs.cache
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\obj\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.AssemblyInfo.cs
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\obj\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.dll
+E:\Shigoto\OcsicoDotNetTraining\Lesson 1\OcsicoTraining.Stasulevich.Lesson1.Task2\obj\Debug\netcoreapp3.1\OcsicoTraining.Stasulevich.Lesson1.Task2.pdb

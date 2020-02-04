@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "OcsicoTraining.Stasulevich.Lesson1.Task1/1.0.0": {
+        "runtime": {
+          "OcsicoTraining.Stasulevich.Lesson1.Task1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OcsicoTraining.Stasulevich.Lesson1.Task1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

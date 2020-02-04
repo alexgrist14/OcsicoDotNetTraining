@@ -1,0 +1,130 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "OcsicoTraining.Stasulevich.Lesson1.Task1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/OcsicoTraining.Stasulevich.Lesson1.Task1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OcsicoTraining.Stasulevich.Lesson1.Task1.dll": {}
+        }
+      },
+      "OcsicoTraining.Stasulevich.Lesson1.Task2/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/OcsicoTraining.Stasulevich.Lesson1.Task2.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OcsicoTraining.Stasulevich.Lesson1.Task2.dll": {}
+        }
+      },
+      "OscicoTraining.Stasulevich.Lesson1.Task3/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/OscicoTraining.Stasulevich.Lesson1.Task3.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OscicoTraining.Stasulevich.Lesson1.Task3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OcsicoTraining.Stasulevich.Lesson1.Task1/1.0.0": {
+      "type": "project",
+      "path": "../OcsicoTraining.Stasulevich.Lesson1.Task1/OcsicoTraining.Stasulevich.Lesson1.Task1.csproj",
+      "msbuildProject": "../OcsicoTraining.Stasulevich.Lesson1.Task1/OcsicoTraining.Stasulevich.Lesson1.Task1.csproj"
+    },
+    "OcsicoTraining.Stasulevich.Lesson1.Task2/1.0.0": {
+      "type": "project",
+      "path": "../OcsicoTraining.Stasulevich.Lesson1.Task2/OcsicoTraining.Stasulevich.Lesson1.Task2.csproj",
+      "msbuildProject": "../OcsicoTraining.Stasulevich.Lesson1.Task2/OcsicoTraining.Stasulevich.Lesson1.Task2.csproj"
+    },
+    "OscicoTraining.Stasulevich.Lesson1.Task3/1.0.0": {
+      "type": "project",
+      "path": "../OscicoTraining.Stasulevich.Lesson1.Task3/OscicoTraining.Stasulevich.Lesson1.Task3.csproj",
+      "msbuildProject": "../OscicoTraining.Stasulevich.Lesson1.Task3/OscicoTraining.Stasulevich.Lesson1.Task3.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "OcsicoTraining.Stasulevich.Lesson1.Task1 >= 1.0.0",
+      "OcsicoTraining.Stasulevich.Lesson1.Task2 >= 1.0.0",
+      "OscicoTraining.Stasulevich.Lesson1.Task3 >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\dan12\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Presentation\\OcsicoTraining.Stasulevich.Lesson1.Presentation.csproj",
+      "projectName": "OcsicoTraining.Stasulevich.Lesson1.Presentation",
+      "projectPath": "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Presentation\\OcsicoTraining.Stasulevich.Lesson1.Presentation.csproj",
+      "packagesPath": "C:\\Users\\dan12\\.nuget\\packages\\",
+      "outputPath": "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Presentation\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\dan12\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Task1\\OcsicoTraining.Stasulevich.Lesson1.Task1.csproj": {
+              "projectPath": "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Task1\\OcsicoTraining.Stasulevich.Lesson1.Task1.csproj"
+            },
+            "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Task2\\OcsicoTraining.Stasulevich.Lesson1.Task2.csproj": {
+              "projectPath": "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OcsicoTraining.Stasulevich.Lesson1.Task2\\OcsicoTraining.Stasulevich.Lesson1.Task2.csproj"
+            },
+            "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OscicoTraining.Stasulevich.Lesson1.Task3\\OscicoTraining.Stasulevich.Lesson1.Task3.csproj": {
+              "projectPath": "E:\\Shigoto\\OcsicoDotNetTraining\\Lesson 1\\OscicoTraining.Stasulevich.Lesson1.Task3\\OscicoTraining.Stasulevich.Lesson1.Task3.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
