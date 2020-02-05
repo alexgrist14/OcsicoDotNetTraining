@@ -40,6 +40,7 @@ Generated\ Files/
 [Bb]uild[Ll]og.*
 /.vs/
 /obj/
+/bin/
 # NUNIT
 *.VisualState.xml
 TestResult.xml
