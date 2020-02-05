@@ -38,7 +38,8 @@ Generated\ Files/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-
+/.vs/
+/obj/
 # NUNIT
 *.VisualState.xml
 TestResult.xml
