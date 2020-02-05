@@ -23,7 +23,7 @@ namespace OscicoTraining.Stasulevich.Lesson1.Task3
 
             return arr;
         }
-        public static bool CheckIfNeedSwap(int[] arr1, int[] arr2, ArrayComparisonBy arrComparisonBy, OrderBy orderBy)
+        public static bool CheckIfNeedSwap(int[] arrayToSwap1, int[] arrayToSwap2, ArrayComparisonBy arrComparisonBy, OrderBy orderBy)
         {
             var res = 0;
             var temp = 0; ;
@@ -32,17 +32,17 @@ namespace OscicoTraining.Stasulevich.Lesson1.Task3
             switch (arrComparisonBy)
             {
                 case ArrayComparisonBy.Sum:
-                    res = arr1.Sum() - arr2.Sum();
+                    res = arrayToSwap1.Sum() - arrayToSwap2.Sum();
                     temp = (orderBy == OrderBy.Asc) ? res : -res;
                     break;
 
                 case ArrayComparisonBy.Max:
-                    res = arr1.Max() - arr2.Max();
+                    res = arrayToSwap1.Max() - arrayToSwap2.Max();
                     temp = (orderBy == OrderBy.Asc) ? res : -res;
                     break;
 
                 case ArrayComparisonBy.Min:
-                    res = arr1.Min() - arr2.Min();
+                    res = arrayToSwap1.Min() - arrayToSwap2.Min();
                     temp = (orderBy == OrderBy.Asc) ? res : -res;
                     break;
             }

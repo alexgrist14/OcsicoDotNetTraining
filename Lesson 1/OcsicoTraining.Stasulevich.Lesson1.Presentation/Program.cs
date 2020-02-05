@@ -15,14 +15,14 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Presentation
                 new int[] {1,3,5,7,9},
                 new int[] {0,1},
                 new int[] {22,2,4,6}
-
              };
 
-            //Console.WriteLine("Greatest common divisor: " + euclideanAlgorithm.GDC(1071, 462));
+            Console.WriteLine("Greatest common divisor: " + euclideanAlgorithm.GDC(1071, 462));
 
-            // Console.WriteLine("Greatest common divisor: " + BinarySearch.BinaryGCD(10, 2));
+            Console.WriteLine("Greatest common divisor: " + BinarySearch.BinaryGCD(10, 2));
 
             var newArr = BubbleSort.Sort(arr, ArrayComparisonBy.Min, OrderBy.Asc);
+
             for (int i = 0; i < newArr.Length; i++)
             {
                 Console.Write("Element({0}): ", i);
@@ -31,9 +31,9 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Presentation
                 {
                     Console.Write("{0}{1}", newArr[i][j], j == (newArr[i].Length - 1) ? "" : " ");
                 }
+
                 Console.WriteLine();
             }
-
 
             Console.ReadKey();
         }
