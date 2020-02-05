@@ -41,6 +41,9 @@ Generated\ Files/
 /.vs/
 /obj/
 /bin/
+bin/
+obj/
+.vs/
 # NUNIT
 *.VisualState.xml
 TestResult.xml
