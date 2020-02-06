@@ -16,6 +16,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.BubbleSort", "OcsicoTraining.Stasulevich.Lesson1.BubbleSort\OcsicoTraining.Stasulevich.Lesson1.BubbleSort.csproj", "{53A73151-6F66-46E4-99FF-89EE00547FF2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson2", "Lesson2", "{543DA14A-0A54-4FAF-B445-565E452FBA9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson2.Presentation", "OcsicoTraining.Stasulevich.Lesson2.Presentation\OcsicoTraining.Stasulevich.Lesson2.Presentation.csproj", "{ED65FA85-02E9-43BA-954A-5C86FE82F880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson2.NewtonMethod", "OcsicoTraining.Stasulevich.Lesson2.NewtonMethod\OcsicoTraining.Stasulevich.Lesson2.NewtonMethod.csproj", "{0317107C-95E2-4946-88D7-558DDFA018DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +80,30 @@ Global
 		{53A73151-6F66-46E4-99FF-89EE00547FF2}.Release|x64.Build.0 = Release|Any CPU
 		{53A73151-6F66-46E4-99FF-89EE00547FF2}.Release|x86.ActiveCfg = Release|Any CPU
 		{53A73151-6F66-46E4-99FF-89EE00547FF2}.Release|x86.Build.0 = Release|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Debug|x64.Build.0 = Debug|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Debug|x86.Build.0 = Debug|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Release|x64.ActiveCfg = Release|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Release|x64.Build.0 = Release|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Release|x86.ActiveCfg = Release|Any CPU
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880}.Release|x86.Build.0 = Release|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Release|x64.Build.0 = Release|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{0317107C-95E2-4946-88D7-558DDFA018DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +113,8 @@ Global
 		{5FB66CE3-3A72-44E2-8F81-970B329FD787} = {3CFF577E-8222-4636-AA5C-2CAFCDEC1F69}
 		{0B51735F-6329-4170-8B81-358A886D928A} = {3CFF577E-8222-4636-AA5C-2CAFCDEC1F69}
 		{53A73151-6F66-46E4-99FF-89EE00547FF2} = {3CFF577E-8222-4636-AA5C-2CAFCDEC1F69}
+		{ED65FA85-02E9-43BA-954A-5C86FE82F880} = {543DA14A-0A54-4FAF-B445-565E452FBA9B}
+		{0317107C-95E2-4946-88D7-558DDFA018DB} = {543DA14A-0A54-4FAF-B445-565E452FBA9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4466558F-7E83-4301-8118-64488F2AD21A}
