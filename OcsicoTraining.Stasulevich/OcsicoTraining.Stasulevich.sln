@@ -4,14 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson1", "Lesson1", "{3CFF577E-8222-4636-AA5C-2CAFCDEC1F69}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson1.Gdc", "OcsicoTraining.Stasulevich.Lesson1.Gdc\OcsicoTraining.Stasulevich.Lesson1.Gdc.csproj", "{A3BE0F87-BF79-4487-9B85-DA3EA2917946}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.Gdc", "OcsicoTraining.Stasulevich.Lesson1.Gdc\OcsicoTraining.Stasulevich.Lesson1.Gdc.csproj", "{A3BE0F87-BF79-4487-9B85-DA3EA2917946}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson1.Presentation", "OcsicoTraining.Stasulevich.Lesson1.Presentation\OcsicoTraining.Stasulevich.Lesson1.Presentation.csproj", "{5FB66CE3-3A72-44E2-8F81-970B329FD787}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.Presentation", "OcsicoTraining.Stasulevich.Lesson1.Presentation\OcsicoTraining.Stasulevich.Lesson1.Presentation.csproj", "{5FB66CE3-3A72-44E2-8F81-970B329FD787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson1.BinaryGdc", "OcsicoTraining.Stasulevich.Lesson1.BinaryGdc\OcsicoTraining.Stasulevich.Lesson1.BinaryGdc.csproj", "{0B51735F-6329-4170-8B81-358A886D928A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.BinaryGdc", "OcsicoTraining.Stasulevich.Lesson1.BinaryGdc\OcsicoTraining.Stasulevich.Lesson1.BinaryGdc.csproj", "{0B51735F-6329-4170-8B81-358A886D928A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson1.BubbleSort", "OcsicoTraining.Stasulevich.Lesson1.BubbleSort\OcsicoTraining.Stasulevich.Lesson1.BubbleSort.csproj", "{53A73151-6F66-46E4-99FF-89EE00547FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson1.BubbleSort", "OcsicoTraining.Stasulevich.Lesson1.BubbleSort\OcsicoTraining.Stasulevich.Lesson1.BubbleSort.csproj", "{53A73151-6F66-46E4-99FF-89EE00547FF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
