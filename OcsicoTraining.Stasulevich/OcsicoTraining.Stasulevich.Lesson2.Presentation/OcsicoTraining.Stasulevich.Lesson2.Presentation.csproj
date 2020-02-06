@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson2.GenericSort\OcsicoTraining.Stasulevich.Lesson2.GenericSort.csproj" />
     <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson2.NewtonMethod\OcsicoTraining.Stasulevich.Lesson2.NewtonMethod.csproj" />
   </ItemGroup>
 
