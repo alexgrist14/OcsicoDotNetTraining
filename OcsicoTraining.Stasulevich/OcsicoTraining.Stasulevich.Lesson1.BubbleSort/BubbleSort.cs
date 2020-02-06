@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -10,13 +10,13 @@ namespace OcsicoTraining.Stasulevich.Lesson1.BubbleSort
     {
         public static int[][] Sort(int[][] arr, ArrayComparisonBy arrComparisonBy, OrderBy orderBy)
         {
-            for (int i = 0; i < arr.Length; i++)
+            for (var i = 0; i < arr.Length; i++)
             {
-                for (int j = 0; j < arr.Length - i - 1; j++)
+                for (var j = 0; j < arr.Length - i - 1; j++)
                 {
                     if (CheckIfNeedSwap(arr[j], arr[j + 1], arrComparisonBy, orderBy))
                     {
-                        int[] temp = arr[j];
+                        var temp = arr[j];
                         arr[j] = arr[j + 1];
                         arr[j + 1] = temp;
                     }
@@ -28,10 +28,10 @@ namespace OcsicoTraining.Stasulevich.Lesson1.BubbleSort
 
         public static bool CheckIfNeedSwap(int[] arrayToSwapFirst, int[] arrayToSwapSecond, ArrayComparisonBy arrComparisonBy, OrderBy orderBy)
         {
-            var res = 0;
-            var temp = 0; ;
+            var temp = 0;
             var needSwap = false;
 
+            int res;
             switch (arrComparisonBy)
             {
                 case ArrayComparisonBy.Sum:

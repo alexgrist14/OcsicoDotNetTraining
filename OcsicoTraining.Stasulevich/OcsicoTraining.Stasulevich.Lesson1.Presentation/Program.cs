@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using enums;
 
 namespace OcsicoTraining.Stasulevich.Lesson1.Presentation
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var arr = new int[][]
             {
@@ -20,11 +20,11 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Presentation
 
             var newArr = BubbleSort.BubbleSort.Sort(arr, ArrayComparisonBy.Min, OrderBy.Asc);
 
-            for (int i = 0; i < newArr.Length; i++)
+            for (var i = 0; i < newArr.Length; i++)
             {
                 Console.Write("Element({0}): ", i);
 
-                for (int j = 0; j < newArr[i].Length; j++)
+                for (var j = 0; j < newArr[i].Length; j++)
                 {
                     Console.Write("{0}{1}", newArr[i][j], j == (newArr[i].Length - 1) ? "" : " ");
                 }
@@ -32,7 +32,6 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Presentation
                 Console.WriteLine();
             }
 
-            Console.ReadKey();
         }
     }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,8 +9,8 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Gdc
         public static int Calculate(int a, int b)
         {
             int nod;
-            int temp = a;
-            int currentStep = 0;
+            var temp = a;
+            var currentStep = 0;
 
             while (temp != 0)
             {
@@ -21,7 +21,7 @@ namespace OcsicoTraining.Stasulevich.Lesson1.Gdc
                 }
                 else
                 {
-                    nod = currentStep * b + temp;
+                    nod = (currentStep * b) + temp;
                     b = temp;
                     temp = nod;
                     currentStep = 0;
