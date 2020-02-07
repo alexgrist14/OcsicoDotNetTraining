@@ -10,7 +10,7 @@ namespace OcsicoTraining.Stasulevich.Lesson2.NewtonMethod
         {
             var x = initValue;
 
-            while (true)
+            do
             {
                 var f = (x * x) - n;
 
@@ -21,7 +21,8 @@ namespace OcsicoTraining.Stasulevich.Lesson2.NewtonMethod
 
                 var dx = -f / (2.0 * x);
                 x += dx;
-            }
+            } while (true);
+
             return x;
         }
     }

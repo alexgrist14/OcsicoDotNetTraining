@@ -27,8 +27,18 @@ namespace OcsicoTraining.Stasulevich.Lesson2.Presentation
             }
 
             Console.WriteLine();
-            Console.WriteLine("root of n degree: "+NewtonMethod.NewtonMethod.Pow(100, 0.0001, 2));
+            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(100, 0.0001, 2));
             Console.WriteLine(Math.Pow(2, 5));
+
+            var arr = new List<int> { 1, 2, 3 };
+            
+            Console.WriteLine(GenericQueue.GenericQueue.Count(arr));
+            GenericQueue.GenericQueue.Enqueue(arr, 4);
+
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
