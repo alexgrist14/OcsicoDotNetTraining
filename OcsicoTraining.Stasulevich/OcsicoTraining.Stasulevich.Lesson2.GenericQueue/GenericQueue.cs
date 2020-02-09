@@ -6,11 +6,14 @@ using System.Text;
 
 namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
 {
-    public class GenericQueue<T>: IEnumerable
+    public class GenericQueue<T>
     {
         private int front = 1;
-        private int rear = -1;
+        private int back = -1;
         private readonly T[] array;
+
+        public int Size { get; }
+        public int Count { get; private set; } = 0;
 
         public GenericQueue(int size)
         {
@@ -18,7 +21,7 @@ namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
             this.array = new T[size];
         }
 
-        public bool IsFull() => rear == Size - 1;
+        public bool IsFull() => back == Size - 1;
 
         public bool IsEmpty() => Count == 0;
 
@@ -29,7 +32,7 @@ namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
                 throw new Exception("Queue is full");
             }
 
-            array[++rear] = item;
+            array[++back] = item;
             Count++;
         }
 
@@ -43,21 +46,17 @@ namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
             var value = array[++front];
             Count--;
 
-            if(front == rear)
+            if (front == back)
             {
                 front = -1;
-                rear = -1;
+                back = -1;
             }
             return value;
         }
 
-        public int Size { get; }
-
-        public int Count { get; private set; } = 0;
-
         public T Peek()
         {
-            if(this.IsEmpty())
+            if (this.IsEmpty())
             {
                 throw new Exception("Queue is empty");
             }
@@ -66,18 +65,37 @@ namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
             return value;
         }
 
-        public IEnumerator GetEnumerator()
+        public void Clear()
         {
             if (this.IsEmpty())
             {
                 throw new Exception("Queue is empty");
             }
-
-            for (var i = front + 1; i <= rear; i++)
+            for (var i = front + 1; i <= back; i++)
             {
-                yield return array[i];
+                Count--;
             }
+
         }
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public bool Contains<T>(T item, IComparer comparer)
+        {
+            var isContains = false;
+            if (this.IsEmpty())
+            {
+                return false;
+            }
+
+            foreach (var str in array)
+            {
+                if (comparer.Compare(str, item) == 0)
+                {
+                    isContains = true;
+                }
+            }
+
+            return isContains;
+        }
+
     }
 }

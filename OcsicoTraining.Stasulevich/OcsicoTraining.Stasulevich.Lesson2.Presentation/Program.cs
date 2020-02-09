@@ -20,15 +20,24 @@ namespace OcsicoTraining.Stasulevich.Lesson2.Presentation
                 new Person{Age = 12, Name = "Subaru"}
             };
 
-            var sortedList = list.BubbleSort();
+            var sortedListAsc = list.BubbleSortAsc();
 
-            foreach (var item in sortedList)
+            foreach (var item in sortedListAsc)
             {
                 Console.WriteLine(item.Age + " - " + item.Name);
             }
 
             Console.WriteLine();
-            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(100, 0.0001, 2));
+
+            var sortedListDesc = list.BubbleSortDesc();
+
+            foreach (var item in sortedListDesc)
+            {
+                Console.WriteLine(item.Age + " - " + item.Name);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(100, 0.001, 2));
             Console.WriteLine(Math.Pow(2, 5));
 
             var q = new GenericQueue<string>(5);

@@ -1,32 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace OcsicoTraining.Stasulevich.Lesson2.GenericSort
 {
-    public class Person : IComparable
+    public class Person : IComparable<Person>
     {
         public string Name { get; set; }
         public int Age { get; set; }
-        public int CompareTo(object other)
+
+        public int CompareTo(Person other)
         {
-            var otherPerson = other as Person;
-            if (otherPerson.Age < Age)
+            if (other == null)
             {
                 return 1;
             }
 
-            if (otherPerson.Age > Age)
-            {
-                return -1;
-            }
-
-            if (otherPerson.Age == Age)
-            {
-                return 0;
-            }
-
-            return 0;
+            return this.Age.CompareTo(other.Age);
         }
     }
 }
