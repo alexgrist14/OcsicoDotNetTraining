@@ -1,22 +1,83 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
 {
-    public static class GenericQueue
+    public class GenericQueue<T>: IEnumerable
     {
-        public static int Count<T>(List<T> array) => array.Count();
+        private int front = 1;
+        private int rear = -1;
+        private readonly T[] array;
 
-        public static void Enqueue<T>(List<T> array, T value) => array.Add(value);
+        public GenericQueue(int size)
+        {
+            this.Size = size;
+            this.array = new T[size];
+        }
 
-        public static void Dequeue<T>(List<T> array) => array.RemoveAt(0);
+        public bool IsFull() => rear == Size - 1;
 
-        public static T Peek<T>(List<T> array) => array.ElementAt(0);
+        public bool IsEmpty() => Count == 0;
 
-        public static bool Contains<T>(List<T> array, T element) => array.Contains(element);
+        public void Enqueue(T item)
+        {
+            if (IsFull())
+            {
+                throw new Exception("Queue is full");
+            }
 
-        public static void Clear<T>(List<T> array) => array.Clear();
+            array[++rear] = item;
+            Count++;
+        }
+
+        public T Dequeue()
+        {
+            if (this.IsEmpty())
+            {
+                throw new Exception("Queue is empty");
+            }
+
+            var value = array[++front];
+            Count--;
+
+            if(front == rear)
+            {
+                front = -1;
+                rear = -1;
+            }
+            return value;
+        }
+
+        public int Size { get; }
+
+        public int Count { get; private set; } = 0;
+
+        public T Peek()
+        {
+            if(this.IsEmpty())
+            {
+                throw new Exception("Queue is empty");
+            }
+
+            var value = array[front + 1];
+            return value;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            if (this.IsEmpty())
+            {
+                throw new Exception("Queue is empty");
+            }
+
+            for (var i = front + 1; i <= rear; i++)
+            {
+                yield return array[i];
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

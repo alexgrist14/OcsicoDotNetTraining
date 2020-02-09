@@ -6,24 +6,24 @@ namespace OcsicoTraining.Stasulevich.Lesson2.NewtonMethod
 {
     public static class NewtonMethod
     {
-        public static double Pow(double n, double eps, double initValue)
+        public static double Pow(double degree, double epsilon, double initValue)
         {
-            var x = initValue;
+            var root = initValue;
 
-            do
+            while (true)
             {
-                var f = (x * x) - n;
+                var function = (root * root) - degree;
 
-                if (Math.Abs(f) < eps)
+                if (Math.Abs(function) < epsilon)
                 {
                     break;
                 }
 
-                var dx = -f / (2.0 * x);
-                x += dx;
-            } while (true);
+                var differential = -function / (2.0 * root);
+                root += differential;
+            }
 
-            return x;
+            return root;
         }
     }
 }
