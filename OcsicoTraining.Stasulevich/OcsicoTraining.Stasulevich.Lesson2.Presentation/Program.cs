@@ -20,7 +20,7 @@ namespace OcsicoTraining.Stasulevich.Lesson2.Presentation
                 new Person{Age = 12, Name = "Subaru"}
             };
 
-            var sortedListAsc = list.BubbleSortAsc();
+            var sortedListAsc = list.Sort((a, b) => a != null && a.CompareTo(b) > 0);
 
             foreach (var item in sortedListAsc)
             {
@@ -28,16 +28,7 @@ namespace OcsicoTraining.Stasulevich.Lesson2.Presentation
             }
 
             Console.WriteLine();
-
-            var sortedListDesc = list.BubbleSortDesc();
-
-            foreach (var item in sortedListDesc)
-            {
-                Console.WriteLine(item.Age + " - " + item.Name);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(56232, 0.0001, 23453,10));
+            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(56232, 0.0001, 23453, 10));
             Console.WriteLine(Math.Pow(2, 5));
 
             var q = new GenericQueue<string>(5);
