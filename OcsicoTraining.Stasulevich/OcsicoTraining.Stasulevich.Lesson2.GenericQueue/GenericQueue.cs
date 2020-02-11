@@ -48,7 +48,7 @@ namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
 
             if (front == back)
             {
-                front = -1;
+                front = 1;
                 back = -1;
             }
             return value;
@@ -71,11 +71,10 @@ namespace OcsicoTraining.Stasulevich.Lesson2.GenericQueue
             {
                 throw new Exception("Queue is empty");
             }
-            for (var i = front + 1; i <= back; i++)
-            {
-                Count--;
-            }
 
+            Count = 0;
+            front = 1;
+            back = -1;
         }
 
         public bool Contains<T>(T item, IComparer comparer)

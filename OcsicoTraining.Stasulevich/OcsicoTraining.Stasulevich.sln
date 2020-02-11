@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson2.GenericSort", "OcsicoTraining.Stasulevich.Lesson2.GenericSort\OcsicoTraining.Stasulevich.Lesson2.GenericSort.csproj", "{9D937F7E-BD27-4554-87D5-FC8CAD4CCA78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson2.GenericQueue", "OcsicoTraining.Stasulevich.Lesson2.GenericQueue\OcsicoTraining.Stasulevich.Lesson2.GenericQueue.csproj", "{0C7DBC31-F0DA-4F25-98B2-C31A0F680F1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson2.GenericQueue", "OcsicoTraining.Stasulevich.Lesson2.GenericQueue\OcsicoTraining.Stasulevich.Lesson2.GenericQueue.csproj", "{0C7DBC31-F0DA-4F25-98B2-C31A0F680F1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
