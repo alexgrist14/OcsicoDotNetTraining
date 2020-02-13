@@ -1,12 +1,18 @@
-﻿using System;
+using System;
+using OcsicoTraining.Stasulevich.Lesson4.VariousUsers;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var user = new User { Name = "Billy", PhoneNumber = "3425434", Salary = 300 };
+
+            Console.WriteLine(user.PrintInfo(new AllPrinter()));
+            Console.WriteLine(user.PrintInfo(new NameAndSalaryPrinter()));
+            Console.WriteLine(user.PrintInfo(new SalaryPrinter()));
+            Console.WriteLine(user.PrintInfo(new NamePrinter()));
         }
     }
 }
