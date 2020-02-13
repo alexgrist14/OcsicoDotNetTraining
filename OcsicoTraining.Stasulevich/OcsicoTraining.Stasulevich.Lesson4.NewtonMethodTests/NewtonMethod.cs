@@ -6,11 +6,11 @@ namespace NewTonMethodTests
     {
         public static double Pow(double power, double epsilon, double initValue, int accuracy)
         {
-            if(initValue == 0)
+            if (initValue == 0)
             {
                 throw new ArgumentException("root must be not zero");
             }
-            if(initValue < 0)
+            if (initValue < 0)
             {
                 throw new ArgumentException("root should be more than 1");
             }
