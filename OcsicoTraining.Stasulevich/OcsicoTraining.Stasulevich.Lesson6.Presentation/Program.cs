@@ -6,6 +6,9 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
+            var number = 20;
+
+            Console.WriteLine(FibonacciNumbers.FibonacciNumbers.FibonacciSequence(number));
 
         }
     }

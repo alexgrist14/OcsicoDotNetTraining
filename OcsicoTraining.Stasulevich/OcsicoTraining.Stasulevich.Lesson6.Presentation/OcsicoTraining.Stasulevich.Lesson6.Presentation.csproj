@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers.csproj" />
+  </ItemGroup>
+
 </Project>
