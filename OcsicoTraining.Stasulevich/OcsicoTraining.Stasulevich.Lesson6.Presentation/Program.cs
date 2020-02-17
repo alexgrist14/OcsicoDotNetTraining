@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
 {
@@ -6,7 +7,7 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
-
+            var a = new List<int>();
         }
     }
 }
