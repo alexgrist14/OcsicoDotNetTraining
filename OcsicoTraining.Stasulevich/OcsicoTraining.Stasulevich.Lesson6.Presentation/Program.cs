@@ -7,7 +7,18 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
-            var a = new List<int>();
+            var collection = new GenericList.GenericList<int>(5)
+            {
+                1,
+                2,
+                3,
+                5
+            };
+
+            foreach(var item in collection)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
