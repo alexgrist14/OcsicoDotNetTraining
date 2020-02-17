@@ -1,27 +1,24 @@
 using System;
+using System.Collections.Generic;
 
 namespace OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers
 {
     public class FibonacciNumbers
     {
-        public static int FibonacciSequence(int number)
+        public static IEnumerable<int> FibonacciSequence(int countOfNumbers)
         {
-            if (number < 0)
-            {
-                throw new ArgumentException("number should be positive");
-            }
-
-            var a = 1;
+            var a = 0;
             var b = 1;
 
-            for (var i = 3; i <= number; i++)
+            for (var i = 0; i < countOfNumbers; i++)
             {
-                var sum = a + b;
-                a = b;
-                b = sum;
-            }
+                var current = a;
 
-            return b;
+                a = b;
+                b += current;
+
+                yield return current;
+            }
         }
     }
 }
