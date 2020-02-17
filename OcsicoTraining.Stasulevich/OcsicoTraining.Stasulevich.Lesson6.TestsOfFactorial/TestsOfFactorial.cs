@@ -5,7 +5,7 @@ namespace OcsicoTraining.Stasulevich.Lesson6.TestsOfFactorial
     public class TestsOfFactorial
     {
         [Test]
-        public void Factorial3_ShouldReturnCorrectValue()
+        public void FactorialOfNumber_Input3_ShouldReturn6()
         {
             //Arrange
             var number = 3;
@@ -15,11 +15,11 @@ namespace OcsicoTraining.Stasulevich.Lesson6.TestsOfFactorial
             var actual = FactorialCalculator.FactorialCalculator.FactorialOfNumber(number);
 
             //Assert
-            Assert.AreEqual(expected, actual, double.Epsilon, "factorial of 3 test is successfull");
+            Assert.AreEqual(expected, actual, double.Epsilon, "factorial of 3 is equal to 6");
         }
 
         [Test]
-        public void Factorial10_ShouldReturnCorrectValue()
+        public void FactorialOfNumber_Input3_ShouldReturn3628800()
         {
             //Arrange
             var number = 10;
@@ -29,11 +29,11 @@ namespace OcsicoTraining.Stasulevich.Lesson6.TestsOfFactorial
             var actual = FactorialCalculator.FactorialCalculator.FactorialOfNumber(number);
 
             //Assert
-            Assert.AreEqual(expected, actual, double.Epsilon, "factorial of 10 test is successfull");
+            Assert.AreEqual(expected, actual, double.Epsilon, "factorial of 10 is equal to 3628800");
         }
 
         [Test]
-        public void FactorialMinus5_Should_Exeption()
+        public void FactorialOfNumber_InputMinus5_Should_Exeption()
         {
             //Arrange
             var number = -5;
@@ -44,7 +44,7 @@ namespace OcsicoTraining.Stasulevich.Lesson6.TestsOfFactorial
         }
 
         [Test]
-        public void Factorial0_Should_Exeption()
+        public void FactorialOfNumber_Input0_Should_Exeption()
         {
             //Arrange
             var number = 0;
