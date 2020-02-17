@@ -7,15 +7,20 @@ namespace OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers
     {
         public static IEnumerable<int> FibonacciSequence(int countOfNumbers)
         {
-            var a = 0;
-            var b = 1;
+            if (countOfNumbers < 0)
+            {
+                throw new ArgumentException("countOfNumbers must be more than 0");
+            }
+
+            var firstNumber = 0;
+            var secondNumber = 1;
 
             for (var i = 0; i < countOfNumbers; i++)
             {
-                var current = a;
+                var current = firstNumber;
 
-                a = b;
-                b += current;
+                firstNumber = secondNumber;
+                secondNumber += current;
 
                 yield return current;
             }
