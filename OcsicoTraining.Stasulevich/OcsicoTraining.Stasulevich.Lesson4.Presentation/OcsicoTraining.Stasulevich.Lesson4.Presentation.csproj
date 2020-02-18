@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem\OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.csproj" />
-    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson4.VariousUsers\OcsicoTraining.Stasulevich.Lesson4.VariousUsers.csproj" />
   </ItemGroup>
 
 </Project>
