@@ -28,14 +28,16 @@ namespace OcsicoTraining.Stasulevich.Lesson2.Presentation
             }
 
             Console.WriteLine();
-            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(56232, 0.0001, 23453, 10));
-            Console.WriteLine(Math.Pow(2, 5));
+            Console.WriteLine("root of n degree: " + NewtonMethod.NewtonMethod.Pow(5, 10));
+            Console.WriteLine(Math.Pow(10, (double)1 / 5));
 
             var q = new GenericQueue<string>(5);
+
             q.Enqueue("First item");
             q.Enqueue("Second item");
             q.Enqueue("Third item");
             q.Enqueue("Fourth item");
+
             Console.WriteLine("Deleted: " + q.Dequeue());
             Console.WriteLine("Deleted: " + q.Dequeue());
         }
