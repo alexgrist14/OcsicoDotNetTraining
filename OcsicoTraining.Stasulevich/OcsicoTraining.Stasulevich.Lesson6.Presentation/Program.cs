@@ -9,7 +9,6 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
             var num = 10;
 
             Console.WriteLine(FactorialCalculator.FactorialCalculator.FactorialOfNumber(num));
-
         }
     }
 }

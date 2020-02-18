@@ -33,25 +33,29 @@ namespace OcsicoTraining.Stasulevich.Lesson6.TestsOfFactorial
         }
 
         [Test]
-        public void FactorialOfNumber_InputMinus5_Should_Exeption()
+        public void FactorialOfNumber_InputMinus5_Should_ThrowException()
         {
             //Arrange
             var number = -5;
 
             //Act
+            void GetException() => FactorialCalculator.FactorialCalculator.FactorialOfNumber(number);
+
             //Assert
-            Assert.Throws<System.ArgumentException>(() => FactorialCalculator.FactorialCalculator.FactorialOfNumber(number));
+            Assert.Throws<System.ArgumentException>(GetException);
         }
 
         [Test]
-        public void FactorialOfNumber_Input0_Should_Exeption()
+        public void FactorialOfNumber_Input0_Should_ThrowException()
         {
             //Arrange
             var number = 0;
 
             //Act
+            void GetException() => FactorialCalculator.FactorialCalculator.FactorialOfNumber(number);
+
             //Assert
-            Assert.Throws<System.ArgumentException>(() => FactorialCalculator.FactorialCalculator.FactorialOfNumber(number));
+            Assert.Throws<System.ArgumentException>(GetException);
         }
     }
 }
