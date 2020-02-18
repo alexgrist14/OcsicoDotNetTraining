@@ -35,7 +35,7 @@ namespace OcsicoTraining.Stasulevich.Lesson6.TestsFibonacciNumbers
         }
 
         [Test]
-        public void FibonacciSequence_InputNegativeNumber1_ShouldExepction()
+        public void FibonacciSequence_InputNegativeNumber1_ShouldThrowException()
         {
             //Arrange
             var number = -1;
