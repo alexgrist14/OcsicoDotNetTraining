@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OcsicoTraining.Stasulevich.Lesson2.NewtonMethod
 {
@@ -14,16 +12,18 @@ namespace OcsicoTraining.Stasulevich.Lesson2.NewtonMethod
             }
 
             var firstNumber = initialValue / power;
-            var secondNumber = 1 / power * (((power - 1) * firstNumber) + (initialValue / Math.Pow(firstNumber, (int)power - 1)));
+            var secondNumber = InitializeSecondNumber(firstNumber, power, initialValue);
 
             do
             {
                 firstNumber = secondNumber;
-                secondNumber = 1 / power * (((power - 1) * firstNumber) + (initialValue / Math.Pow(firstNumber, (int)power - 1)));
+                secondNumber = InitializeSecondNumber(firstNumber, power, initialValue);
             }
             while (Math.Abs(secondNumber - firstNumber) > epsilon);
 
             return secondNumber;
         }
+
+        private static double InitializeSecondNumber(double firstNumber, double power, double initialValue) => 1 / power * (((power - 1) * firstNumber) + (initialValue / Math.Pow(firstNumber, (int)power - 1)));
     }
 }
