@@ -6,7 +6,9 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
+            var num = 10;
 
+            Console.WriteLine(FactorialCalculator.FactorialCalculator.FactorialOfNumber(num));
         }
     }
 }
