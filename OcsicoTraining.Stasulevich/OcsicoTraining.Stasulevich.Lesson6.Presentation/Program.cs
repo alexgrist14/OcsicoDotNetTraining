@@ -7,13 +7,10 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
-            var collection = new GenericList.GenericList<int>(5)
-            {
-                1,
-                2,
-                3,
-                5
-            };
+            var collection = new GenericList.GenericList<int>(2) { 1, 2 };
+
+            collection.Add(3);
+            collection.Remove(1);
 
             foreach(var item in collection)
             {

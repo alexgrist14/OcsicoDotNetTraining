@@ -9,6 +9,11 @@ namespace OcsicoTraining.Stasulevich.Lesson6.GenericList
         private T[] items;
         private int size;
 
+        public GenericList()
+        {
+
+        }
+
         public GenericList(int capacity)
         {
             if (capacity < 0)
@@ -83,6 +88,5 @@ namespace OcsicoTraining.Stasulevich.Lesson6.GenericList
         }
 
         private int IndexOf(T item) => Array.IndexOf(items, item);
-
     }
 }
