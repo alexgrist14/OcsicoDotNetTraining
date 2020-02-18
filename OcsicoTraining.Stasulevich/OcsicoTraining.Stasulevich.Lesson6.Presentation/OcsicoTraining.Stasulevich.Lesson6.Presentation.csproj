@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FactorialCalculator\OcsicoTraining.Stasulevich.Lesson6.FactorialCalculator.csproj" />
+  </ItemGroup>
+
 </Project>
