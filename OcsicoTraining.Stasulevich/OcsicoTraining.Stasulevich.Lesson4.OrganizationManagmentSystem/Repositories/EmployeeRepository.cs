@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Linq;
 using System.Text.Json;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public class EmployeeRepository : IRepository<Employee>
+    public class EmployeeRepository : IEmployeeRepository
     {
         public void Add(Employee emp)
         {
             var json = JsonSerializer.Serialize(emp);
-            File.AppendAllText("employees.txt", json+Environment.NewLine);
+            File.AppendAllText("employees.txt", json + Environment.NewLine);
         }
 
         public void Remove(Employee emp)
@@ -47,16 +47,8 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             }
         }
 
-        public List<Employee> GetAll()
-        {
-            var employees = new List<Employee>();
-
-
-            var json = File.ReadAllText("employees.txt");
-            var employee = JsonSerializer.Deserialize<Employee>(json);
-            employees.Add(employee);
-
-            return employees;
-        }
+        public List<Employee> GetAll() => File.ReadAllLines("employees.txt")
+                .Select(x => JsonSerializer.Deserialize<Employee>(x))
+                .ToList();
     }
 }
