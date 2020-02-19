@@ -7,15 +7,9 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
-            var collection = new GenericList.GenericList<int>(2) { 1, 2 };
+            var num = 10;
 
-            collection.Add(3);
-            collection.Remove(1);
-
-            foreach(var item in collection)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine(FactorialCalculator.FactorialCalculator.FactorialOfNumber(num));
         }
     }
 }
