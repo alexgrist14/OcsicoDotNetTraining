@@ -9,6 +9,5 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
         public Guid OrganizationId { get; set; }
 
         public Guid RoleId { get; set; }
-
     }
 }

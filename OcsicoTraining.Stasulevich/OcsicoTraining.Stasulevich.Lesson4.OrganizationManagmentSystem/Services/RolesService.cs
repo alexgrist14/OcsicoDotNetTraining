@@ -9,12 +9,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
 
         public RolesService(IRolesRepository rolesRepository) => this.rolesRepository = rolesRepository;
 
-        public void CreateRole(Roles role) => rolesRepository.Add(role);
+        public void CreateRole(Role role) => rolesRepository.Add(role);
 
-        public List<Roles> GetAllRoles() => rolesRepository.GetAll();
+        public List<Role> GetAllRoles() => rolesRepository.GetAll();
 
-        public void RemoveRole(Roles role) => rolesRepository.Remove(role);
+        public void RemoveRole(Role role) => rolesRepository.Remove(role);
 
-        public void UpdateRole(Roles role) => rolesRepository.Update(role);
+        public void UpdateRole(Role role) => rolesRepository.Update(role);
     }
 }

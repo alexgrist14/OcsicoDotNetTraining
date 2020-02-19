@@ -19,8 +19,8 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var employeeService = serviceProvider.GetService<IEmployeeService>();
             var rolesService = serviceProvider.GetService<IRoleService>();
 
-            var adminRole = new Roles { Name = "Admin" };
-            var juniorRole = new Roles { Name = "Junior" };
+            var adminRole = new Role { Name = "Admin" };
+            var juniorRole = new Role { Name = "Junior" };
 
             var orgBlizzard = organizationServise.CreateOrganization("Blizzard");
             var orgNintendo = organizationServise.CreateOrganization("Nintendo");

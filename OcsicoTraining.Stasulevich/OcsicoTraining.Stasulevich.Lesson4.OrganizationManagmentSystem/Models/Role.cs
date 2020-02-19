@@ -2,9 +2,9 @@ using System;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 {
-    public class Roles
+    public class Role
     {
-        public Roles() => Id = Guid.NewGuid();
+        public Role() => Id = Guid.NewGuid();
 
         public Guid Id { get; }
 

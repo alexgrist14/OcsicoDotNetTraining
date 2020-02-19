@@ -4,9 +4,9 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public class RolesRepository : MemoryBaseRepository<Roles>, IRolesRepository
+    public class RolesRepository : MemoryBaseRepository<Role>, IRolesRepository
     {
-        public override void Remove(Roles entity)
+        public override void Remove(Role entity)
         {
             if (!Entities.Any(e => e.Id == entity.Id))
             {
@@ -16,7 +16,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             base.Remove(entity);
         }
 
-        public override void Update(Roles entity)
+        public override void Update(Role entity)
         {
             if (!Entities.Any(e => e.Id == entity.Id))
             {
