@@ -5,13 +5,13 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 {
-    public class OrganizationService: IOrganizationService
+    public class OrganizationService : IOrganizationService
     {
         private readonly IOrganizationRepository organizationRepository;
         private readonly IEmployeeRepository employeeRepository;
-        private readonly IStagingEntityRepository stagingEntityRepository;
+        private readonly IEmployeeOrganizationRoleRepository stagingEntityRepository;
 
-        public OrganizationService(IOrganizationRepository organizationRepository, IEmployeeRepository employeeRepository, IStagingEntityRepository stagingEntityRepository)
+        public OrganizationService(IOrganizationRepository organizationRepository, IEmployeeRepository employeeRepository, IEmployeeOrganizationRoleRepository stagingEntityRepository)
         {
             this.organizationRepository = organizationRepository;
             this.employeeRepository = employeeRepository;
@@ -23,7 +23,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             var stagEntities = stagingEntityRepository.GetAll()
                  .FindAll(e => e.OrganizationId == organizationId && e.EmployeeId == employeeId);
 
-            foreach(var item in stagEntities)
+            foreach (var item in stagEntities)
             {
                 stagingEntityRepository.Remove(item);
             }
@@ -54,7 +54,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 
         public void AddEmployeeOrganization(Guid organizationId, Guid employeeId, Guid roleId)
         {
-            var empOrgRole = new StagingEntity
+            var empOrgRole = new EmployeeOrganizationRole
             {
                 EmployeeId = employeeId,
                 OrganizationId = organizationId,
@@ -66,7 +66,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 
         public void AssignEmployeeToNewRole(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
         {
-            if(roleIdRemove != null)
+            if (roleIdRemove != null)
             {
                 var stagEntityRemove = CreateStagingEntity(organizationId, employeeId, (Guid)roleIdRemove);
 
@@ -78,7 +78,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             stagingEntityRepository.Add(stagEntityAdd);
         }
 
-        private StagingEntity CreateStagingEntity(Guid organizationId, Guid employeeId, Guid roleId) => new StagingEntity
+        private EmployeeOrganizationRole CreateStagingEntity(Guid organizationId, Guid employeeId, Guid roleId) => new EmployeeOrganizationRole
         {
             EmployeeId = employeeId,
             OrganizationId = organizationId,

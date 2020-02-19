@@ -9,13 +9,15 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
 {
     public class OrganizationRepository : IOrganizationRepository
     {
+        private readonly string file = "organizations.txt";
+
         public void Add(Organization entity)
         {
             var json = JsonSerializer.Serialize(entity);
-            File.AppendAllText("organizations.txt", json + Environment.NewLine);
+            File.AppendAllText(file, json + Environment.NewLine);
         }
 
-        public List<Organization> GetAll() => File.ReadAllLines("organizations.txt")
+        public List<Organization> GetAll() => File.ReadAllLines(file)
             .Select(x => JsonSerializer.Deserialize<Organization>(x))
             .ToList();
 
@@ -28,7 +30,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText("organizations.txt", json);
+                File.AppendAllText(file, json);
             }
         }
 
@@ -42,7 +44,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText("organizations.txt", json);
+                File.AppendAllText(file, json);
             }
         }
     }

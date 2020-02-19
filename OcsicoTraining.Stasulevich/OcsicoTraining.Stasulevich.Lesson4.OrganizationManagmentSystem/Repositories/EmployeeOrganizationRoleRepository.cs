@@ -7,19 +7,21 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public class StagingEntityRepository : IStagingEntityRepository
+    public class EmployeeOrganizationRoleRepository : IEmployeeOrganizationRoleRepository
     {
-        public void Add(StagingEntity entity)
+        private readonly string file = "employeeOrganizationRole.txt";
+
+        public void Add(EmployeeOrganizationRole entity)
         {
             var json = JsonSerializer.Serialize(entity);
-            File.AppendAllText("stagingEntity.txt", json + Environment.NewLine);
+            File.AppendAllText(file, json + Environment.NewLine);
         }
 
-        public List<StagingEntity> GetAll() => File.ReadAllLines("stagingEntity.txt")
-            .Select(x => JsonSerializer.Deserialize<StagingEntity>(x))
+        public List<EmployeeOrganizationRole> GetAll() => File.ReadAllLines(file)
+            .Select(x => JsonSerializer.Deserialize<EmployeeOrganizationRole>(x))
             .ToList();
 
-        public void Remove(StagingEntity entity)
+        public void Remove(EmployeeOrganizationRole entity)
         {
             var entities = GetAll();
 
@@ -28,11 +30,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText("stagingEntity.txt", json);
+                File.AppendAllText(file, json);
             }
         }
 
-        public void Update(StagingEntity entity)
+        public void Update(EmployeeOrganizationRole entity)
         {
             var entities = GetAll();
 
@@ -42,7 +44,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText("stagingEntity.txt", json);
+                File.AppendAllText(file, json);
             }
         }
     }

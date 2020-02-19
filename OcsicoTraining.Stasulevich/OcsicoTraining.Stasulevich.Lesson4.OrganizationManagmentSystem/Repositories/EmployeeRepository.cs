@@ -9,10 +9,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+        private readonly string file = "employees.txt";
+
         public void Add(Employee emp)
         {
             var json = JsonSerializer.Serialize(emp);
-            File.AppendAllText("employees.txt", json + Environment.NewLine);
+            File.AppendAllText(file, json + Environment.NewLine);
         }
 
         public void Remove(Employee emp)
@@ -26,7 +28,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText("employees.txt", json);
+                File.AppendAllText(file, json);
             }
         }
 
@@ -43,11 +45,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText("employees.txt", json);
+                File.AppendAllText(file, json);
             }
         }
 
-        public List<Employee> GetAll() => File.ReadAllLines("employees.txt")
+        public List<Employee> GetAll() => File.ReadAllLines(file)
                 .Select(x => JsonSerializer.Deserialize<Employee>(x))
                 .ToList();
     }

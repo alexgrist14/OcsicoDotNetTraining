@@ -54,7 +54,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 
             containerBuilder.Populate(serviceCollection);
             _ = containerBuilder.RegisterType<RolesRepository>().As<IRolesRepository>();
-            _ = containerBuilder.RegisterType<StagingEntityRepository>().As<IStagingEntityRepository>();
+            _ = containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
             _ = containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
             _ = containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
             _ = containerBuilder.RegisterType<RolesService>().As<IRoleService>();

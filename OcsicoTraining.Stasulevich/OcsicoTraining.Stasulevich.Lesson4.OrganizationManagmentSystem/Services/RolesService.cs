@@ -9,7 +9,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
 
         public RolesService(IRolesRepository rolesRepository) => this.rolesRepository = rolesRepository;
 
-        public void CreateRole(string name) => rolesRepository.Add(name);
+        public void CreateRole(Roles role) => rolesRepository.Add(role);
 
         public List<Roles> GetAllRoles() => rolesRepository.GetAll();
 

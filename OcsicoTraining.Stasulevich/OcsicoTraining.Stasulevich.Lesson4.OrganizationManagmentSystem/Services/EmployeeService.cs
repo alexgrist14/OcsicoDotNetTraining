@@ -8,12 +8,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository employeeRepository;
-        private readonly IStagingEntityRepository stagingEntityRepository;
+        private readonly IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository;
 
-        public EmployeeService(IEmployeeRepository employeeRepository, IStagingEntityRepository stagingEntity)
+        public EmployeeService(IEmployeeRepository employeeRepository, IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository)
         {
             this.employeeRepository = employeeRepository;
-            this.stagingEntityRepository = stagingEntity;
+            this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
         public void CreateEmployee(Employee employee) => employeeRepository.Add(employee);
@@ -31,11 +31,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 
             employeeRepository.Remove(employee);
 
-            var stagEntity = stagingEntityRepository.GetAll().FindAll(e => e.EmployeeId == id);
+            var stagEntity = employeeOrganizationRoleRepository.GetAll().FindAll(e => e.EmployeeId == id);
 
             foreach (var item in stagEntity)
             {
-                stagingEntityRepository.Remove(item);
+                employeeOrganizationRoleRepository.Remove(item);
             }
         }
 

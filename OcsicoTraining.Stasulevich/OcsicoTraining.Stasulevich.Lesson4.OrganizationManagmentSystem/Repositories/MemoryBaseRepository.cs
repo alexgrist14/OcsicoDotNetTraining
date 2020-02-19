@@ -6,6 +6,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
     public abstract class MemoryBaseRepository<T> : IRepository<T> where T : class
     {
         protected readonly List<T> Entities;
+
         protected MemoryBaseRepository() => Entities = new List<T>();
 
         public void Add(T entity) => Entities.Add(entity);
