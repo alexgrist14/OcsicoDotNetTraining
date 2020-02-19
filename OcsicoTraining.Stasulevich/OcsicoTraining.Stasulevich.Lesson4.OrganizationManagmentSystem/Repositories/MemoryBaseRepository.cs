@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {

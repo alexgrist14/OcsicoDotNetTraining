@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {

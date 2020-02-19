@@ -3,7 +3,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services;
 

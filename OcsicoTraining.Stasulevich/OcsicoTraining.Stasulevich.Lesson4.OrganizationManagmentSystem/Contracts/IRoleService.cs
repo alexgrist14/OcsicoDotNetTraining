@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface
+namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts
 {
     public interface IRoleService
     {

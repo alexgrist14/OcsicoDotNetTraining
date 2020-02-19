@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {

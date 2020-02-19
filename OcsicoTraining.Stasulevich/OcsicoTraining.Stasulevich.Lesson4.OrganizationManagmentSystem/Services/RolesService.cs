@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Interface;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services
 {
@@ -9,7 +9,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
 
         public RolesService(IRolesRepository rolesRepository) => this.rolesRepository = rolesRepository;
 
-        public void CreateRole(Roles role) => rolesRepository.Add(role);
+        public void CreateRole(string name) => rolesRepository.Add(name);
 
         public List<Roles> GetAllRoles() => rolesRepository.GetAll();
 
