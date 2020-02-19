@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FactorialCalculator\OcsicoTraining.Stasulevich.Lesson6.FactorialCalculator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers.csproj" />
+  </ItemGroup>
+
+</Project>
