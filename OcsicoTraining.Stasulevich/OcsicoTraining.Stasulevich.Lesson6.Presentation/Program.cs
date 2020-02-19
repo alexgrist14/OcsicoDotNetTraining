@@ -6,9 +6,9 @@ namespace OcsicoTraining.Stasulevich.Lesson6.Presentation
     {
         private static void Main()
         {
-            var number = 20;
+            var num = 10;
 
-            Console.WriteLine(FibonacciNumbers.FibonacciNumbers.FibonacciSequence(number));
+            Console.WriteLine(FactorialCalculator.FactorialCalculator.FactorialOfNumber(num));
         }
     }
 }
