@@ -9,4 +9,8 @@
     <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FactorialCalculator\OcsicoTraining.Stasulevich.Lesson6.FactorialCalculator.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers.csproj" />
+  </ItemGroup>
+
 </Project>
