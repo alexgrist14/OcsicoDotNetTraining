@@ -11,7 +11,7 @@ namespace OcsicoTraining.Stasulevich.Lesson6.GenericList
 
         public GenericList()
         {
-
+            items = new T[4];
         }
 
         public GenericList(int capacity)
