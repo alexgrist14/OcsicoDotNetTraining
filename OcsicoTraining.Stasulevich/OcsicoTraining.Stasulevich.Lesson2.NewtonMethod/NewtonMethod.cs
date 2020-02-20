@@ -1,25 +1,29 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OcsicoTraining.Stasulevich.Lesson2.NewtonMethod
 {
     public static class NewtonMethod
     {
-        public static double Pow(double power, double epsilon, double initValue, int accuracy)
+        public static double Pow(double power, double initialValue, double epsilon = 0.0000001)
         {
-            var root = initValue;
-            double function;
+            if (initialValue <= 0)
+            {
+                throw new ArgumentException("initialValue must be positive");
+            }
+
+            var firstNumber = initialValue / power;
+            var secondNumber = InitializeSecondNumber(firstNumber, power, initialValue);
 
             do
             {
-                function = (root * root) - power;
-                var differential = -function / (2.0 * root);
-                root += differential;
+                firstNumber = secondNumber;
+                secondNumber = InitializeSecondNumber(firstNumber, power, initialValue);
             }
-            while ((Math.Abs(function) < epsilon) != true);
+            while (Math.Abs(secondNumber - firstNumber) > epsilon);
 
-            return Math.Round(root, accuracy);
+            return secondNumber;
         }
+
+        private static double InitializeSecondNumber(double firstNumber, double power, double initialValue) => 1 / power * (((power - 1) * firstNumber) + (initialValue / Math.Pow(firstNumber, (int)power - 1)));
     }
 }
