@@ -13,4 +13,8 @@
     <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers\OcsicoTraining.Stasulevich.Lesson6.FibonacciNumbers.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OcsicoTraining.Stasulevich.Lesson6.GenericList\OcsicoTraining.Stasulevich.Lesson6.GenericList.csproj" />
+  </ItemGroup>
+
 </Project>
