@@ -53,13 +53,13 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.Populate(serviceCollection);
-            _ = containerBuilder.RegisterType<RolesRepository>().As<IRolesRepository>();
-            _ = containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
-            _ = containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
-            _ = containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
-            _ = containerBuilder.RegisterType<RolesService>().As<IRoleService>();
-            _ = containerBuilder.RegisterType<OrganizationService>().As<IOrganizationService>();
-            _ = containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();
+            containerBuilder.RegisterType<RolesRepository>().As<IRolesRepository>();
+            containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
+            containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
+            containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
+            containerBuilder.RegisterType<RolesService>().As<IRoleService>();
+            containerBuilder.RegisterType<OrganizationService>().As<IOrganizationService>();
+            containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();
 
             var container = containerBuilder.Build();
 
