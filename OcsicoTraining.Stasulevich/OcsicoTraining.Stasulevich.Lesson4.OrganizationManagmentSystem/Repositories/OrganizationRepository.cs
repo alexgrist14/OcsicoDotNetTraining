@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
@@ -11,17 +12,17 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
     {
         private readonly string file = "organizations.txt";
 
-        public void Add(Organization entity)
+        public async Task AddAsync(Organization entity)
         {
             var json = JsonSerializer.Serialize(entity);
-            File.AppendAllText(file, json + Environment.NewLine);
+            await File.AppendAllTextAsync(file, json + Environment.NewLine);
         }
 
         public List<Organization> GetAll() => File.ReadAllLines(file)
             .Select(x => JsonSerializer.Deserialize<Organization>(x))
             .ToList();
 
-        public void Remove(Organization entity)
+        public async Task RemoveAsync(Organization entity)
         {
             var entities = GetAll();
 
@@ -30,11 +31,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 
-        public void Update(Organization entity)
+        public async Task UpdateAsync(Organization entity)
         {
             var entities = GetAll();
 
@@ -44,7 +45,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
     }

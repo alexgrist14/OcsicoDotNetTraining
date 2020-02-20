@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 {
     public interface IEmployeeService
     {
-        void CreateEmployee(Employee employee);
-        void RemoveEmployee(Guid id);
-        void UpdateEmployee(Employee employee);
+        Task CreateEmployeeAsync(Employee employee);
+        Task RemoveEmployeeAsync(Guid id);
+        Task UpdateEmployeeAsync(Employee employee);
         List<Employee> GetAllEmployees();
     }
 }

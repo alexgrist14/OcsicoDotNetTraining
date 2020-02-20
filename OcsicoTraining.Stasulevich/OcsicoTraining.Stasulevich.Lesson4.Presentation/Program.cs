@@ -30,14 +30,14 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var secondEmployee = new Employee { Name = "Kazuma" };
             var thirdEmployee = new Employee { Name = "Subaru" };
 
-            rolesService.CreateRole(adminRole);
-            rolesService.CreateRole(juniorRole);
-            employeeService.CreateEmployee(firstEmployee);
-            employeeService.CreateEmployee(secondEmployee);
-            employeeService.CreateEmployee(thirdEmployee);
-            organizationServise.AddEmployeeOrganization(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
-            organizationServise.AddEmployeeOrganization(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
-            organizationServise.AddEmployeeOrganization(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
+            rolesService.CreateRoleAsync(adminRole);
+            rolesService.CreateRoleAsync(juniorRole);
+            employeeService.CreateEmployeeAsync(firstEmployee);
+            employeeService.CreateEmployeeAsync(secondEmployee);
+            employeeService.CreateEmployeeAsync(thirdEmployee);
+            organizationServise.AddEmployeeOrganizationAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
+            organizationServise.AddEmployeeOrganizationAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
+            organizationServise.AddEmployeeOrganizationAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
 
             var employees = organizationServise.GetAllEmployees(orgBlizzard.Id);
 

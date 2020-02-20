@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts
 {
     public interface IRoleService
     {
-        void CreateRole(Role role);
-        void RemoveRole(Role role);
-        void UpdateRole(Role role);
+        Task CreateRoleAsync(Role role);
+        Task RemoveRoleAsync(Role role);
+        Task UpdateRoleAsync(Role role);
         List<Role> GetAllRoles();
     }
 }
