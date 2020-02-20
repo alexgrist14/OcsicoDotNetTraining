@@ -9,31 +9,31 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
     {
         private readonly IOrganizationRepository organizationRepository;
         private readonly IEmployeeRepository employeeRepository;
-        private readonly IEmployeeOrganizationRoleRepository stagingEntityRepository;
+        private readonly IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository;
 
-        public OrganizationService(IOrganizationRepository organizationRepository, IEmployeeRepository employeeRepository, IEmployeeOrganizationRoleRepository stagingEntityRepository)
+        public OrganizationService(IOrganizationRepository organizationRepository, IEmployeeRepository employeeRepository, IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository)
         {
             this.organizationRepository = organizationRepository;
             this.employeeRepository = employeeRepository;
-            this.stagingEntityRepository = stagingEntityRepository;
+            this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
         public void RemoveEmployeeFromOrganization(Guid organizationId, Guid employeeId)
         {
-            var stagEntities = stagingEntityRepository.GetAll()
+            var emgOrgRoles = employeeOrganizationRoleRepository.GetAll()
                  .FindAll(e => e.OrganizationId == organizationId && e.EmployeeId == employeeId);
 
-            foreach (var item in stagEntities)
+            foreach (var item in emgOrgRoles)
             {
-                stagingEntityRepository.Remove(item);
+                employeeOrganizationRoleRepository.Remove(item);
             }
         }
 
         public List<Employee> GetAllEmployees(Guid organizationId)
         {
-            var stagEntities = stagingEntityRepository.GetAll().FindAll(e => e.OrganizationId == organizationId);
+            var emgOrgRoles = employeeOrganizationRoleRepository.GetAll().FindAll(e => e.OrganizationId == organizationId);
             var employees = employeeRepository.GetAll()
-                .FindAll(emp => stagEntities.Select(e => e.EmployeeId).Contains(emp.Id));
+                .FindAll(emp => emgOrgRoles.Select(e => e.EmployeeId).Contains(emp.Id));
             return employees;
         }
 
@@ -61,21 +61,21 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 RoleId = roleId
             };
 
-            stagingEntityRepository.Add(empOrgRole);
+            employeeOrganizationRoleRepository.Add(empOrgRole);
         }
 
         public void AssignEmployeeToNewRole(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
         {
             if (roleIdRemove != null)
             {
-                var stagEntityRemove = CreateStagingEntity(organizationId, employeeId, (Guid)roleIdRemove);
+                var empOrgRoleRemove = CreateStagingEntity(organizationId, employeeId, (Guid)roleIdRemove);
 
-                stagingEntityRepository.Remove(stagEntityRemove);
+                employeeOrganizationRoleRepository.Remove(empOrgRoleRemove);
             }
 
-            var stagEntityAdd = CreateStagingEntity(organizationId, employeeId, roleIdAdd);
+            var empOrgRoleAdd = CreateStagingEntity(organizationId, employeeId, roleIdAdd);
 
-            stagingEntityRepository.Add(stagEntityAdd);
+            employeeOrganizationRoleRepository.Add(empOrgRoleAdd);
         }
 
         private EmployeeOrganizationRole CreateStagingEntity(Guid organizationId, Guid employeeId, Guid roleId) => new EmployeeOrganizationRole
