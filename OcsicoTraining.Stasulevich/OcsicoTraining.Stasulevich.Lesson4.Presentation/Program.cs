@@ -1,5 +1,12 @@
 using System;
-using OcsicoTraining.Stasulevich.Lesson4.VariousUsers;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services;
+
 
 namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 {
@@ -7,12 +14,56 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
     {
         public static void Main()
         {
-            var user = new User { Name = "Billy", PhoneNumber = "3425434", Salary = 300 };
+            var serviceProvider = GetServiceProvider();
+            var organizationServise = serviceProvider.GetService<IOrganizationService>();
+            var employeeService = serviceProvider.GetService<IEmployeeService>();
+            var rolesService = serviceProvider.GetService<IRoleService>();
 
-            Console.WriteLine(user.PrintInfo(new AllPrinter()));
-            Console.WriteLine(user.PrintInfo(new NameAndSalaryPrinter()));
-            Console.WriteLine(user.PrintInfo(new SalaryPrinter()));
-            Console.WriteLine(user.PrintInfo(new NamePrinter()));
+            var adminRole = new Role { Name = "Admin" };
+            var juniorRole = new Role { Name = "Junior" };
+
+            var orgBlizzard = organizationServise.CreateOrganization("Blizzard");
+            var orgNintendo = organizationServise.CreateOrganization("Nintendo");
+            var orgKyotoAnimation = organizationServise.CreateOrganization("KyotoAnimation");
+
+            var firstEmployee = new Employee { Name = "Kojima" };
+            var secondEmployee = new Employee { Name = "Kazuma" };
+            var thirdEmployee = new Employee { Name = "Subaru" };
+
+            rolesService.CreateRole(adminRole);
+            rolesService.CreateRole(juniorRole);
+            employeeService.CreateEmployee(firstEmployee);
+            employeeService.CreateEmployee(secondEmployee);
+            employeeService.CreateEmployee(thirdEmployee);
+            organizationServise.AddEmployeeOrganization(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
+            organizationServise.AddEmployeeOrganization(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
+            organizationServise.AddEmployeeOrganization(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
+
+            var employees = organizationServise.GetAllEmployees(orgBlizzard.Id);
+
+            foreach (var employee in employees)
+            {
+                Console.WriteLine($"{employee.Id} {employee.Name}");
+            }
+        }
+
+        private static IServiceProvider GetServiceProvider()
+        {
+            var serviceCollection = new ServiceCollection();
+            var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.Populate(serviceCollection);
+            containerBuilder.RegisterType<RolesRepository>().As<IRolesRepository>();
+            containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
+            containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
+            containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
+            containerBuilder.RegisterType<RolesService>().As<IRoleService>();
+            containerBuilder.RegisterType<OrganizationService>().As<IOrganizationService>();
+            containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();
+
+            var container = containerBuilder.Build();
+
+            return new AutofacServiceProvider(container);
         }
     }
 }

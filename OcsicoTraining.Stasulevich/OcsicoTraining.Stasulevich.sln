@@ -50,6 +50,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsicoTraining.Stasulevich.Lesson6.GenericList", "OcsicoTraining.Stasulevich.Lesson6.GenericList\OcsicoTraining.Stasulevich.Lesson6.GenericList.csproj", "{53D9B783-F170-41DE-B083-2E10C5D0944C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson4", "Lesson4", "{13F4438B-82BB-4859-9F06-DC81F6379C16}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem", "OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem\OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.csproj", "{07CEDB05-D52C-4256-A22A-94D068453D68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -264,6 +268,18 @@ Global
 		{53D9B783-F170-41DE-B083-2E10C5D0944C}.Release|x64.Build.0 = Release|Any CPU
 		{53D9B783-F170-41DE-B083-2E10C5D0944C}.Release|x86.ActiveCfg = Release|Any CPU
 		{53D9B783-F170-41DE-B083-2E10C5D0944C}.Release|x86.Build.0 = Release|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Debug|x64.Build.0 = Debug|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Debug|x86.Build.0 = Debug|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Release|x64.ActiveCfg = Release|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Release|x64.Build.0 = Release|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Release|x86.ActiveCfg = Release|Any CPU
+		{07CEDB05-D52C-4256-A22A-94D068453D68}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -286,6 +302,7 @@ Global
 		{7D9ACCC4-591C-4A8B-8D9E-38DDD80382CC} = {862F857A-41EE-42D6-B912-65310EB5197A}
 		{2CF2666B-C251-479B-AF46-712D7D21EAC1} = {862F857A-41EE-42D6-B912-65310EB5197A}
 		{53D9B783-F170-41DE-B083-2E10C5D0944C} = {798C6E98-06C0-45E3-8E24-33B74BD25519}
+		{07CEDB05-D52C-4256-A22A-94D068453D68} = {862F857A-41EE-42D6-B912-65310EB5197A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4466558F-7E83-4301-8118-64488F2AD21A}
