@@ -18,7 +18,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             await File.AppendAllTextAsync(file, json + Environment.NewLine);
         }
 
-        public async Task RemoveAsync(Employee emp)
+        public void Remove(Employee emp)
         {
             var employees = GetAll();
 
@@ -29,11 +29,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                await File.AppendAllTextAsync(file, json);
+                File.AppendAllTextAsync(file, json);
             }
         }
 
-        public async Task UpdateAsync(Employee emp)
+        public void Update(Employee emp)
         {
             var employees = GetAll();
 
@@ -46,7 +46,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                await File.AppendAllTextAsync(file, json);
+                File.AppendAllTextAsync(file, json);
             }
         }
 

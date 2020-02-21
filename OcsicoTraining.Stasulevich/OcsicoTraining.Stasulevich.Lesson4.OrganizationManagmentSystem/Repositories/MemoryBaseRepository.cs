@@ -14,12 +14,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
 
         public List<T> GetAll() => Entities;
 
-        public virtual async Task RemoveAsync(T entity) => await Task.Run(() => Entities.Remove(entity));
+        public virtual void Remove(T entity) => Entities.Remove(entity);
 
-        public virtual async Task UpdateAsync(T entity)
+        public virtual void Update(T entity)
         {
-            await Task.Run(() => Entities.Remove(entity));
-            await Task.Run(() => Entities.Add(entity));
+            Entities.Remove(entity);
+            Entities.Add(entity);
         }
     }
 }

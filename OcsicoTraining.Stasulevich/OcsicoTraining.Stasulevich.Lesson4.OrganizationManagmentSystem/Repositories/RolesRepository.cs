@@ -7,24 +7,24 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
 {
     public class RolesRepository : MemoryBaseRepository<Role>, IRolesRepository
     {
-        public override async Task RemoveAsync(Role entity)
+        public override void Remove(Role entity)
         {
             if (!Entities.Any(e => e.Id == entity.Id))
             {
                 throw new ArgumentException("Entity doesn't exist.");
             }
 
-            await base.RemoveAsync(entity);
+             base.Remove(entity);
         }
 
-        public override async Task UpdateAsync(Role entity)
+        public override void Update(Role entity)
         {
             if (!Entities.Any(e => e.Id == entity.Id))
             {
                 throw new ArgumentException("Entity doesn't exist.");
             }
 
-            await base.UpdateAsync(entity);
+            base.Update(entity);
         }
     }
 }

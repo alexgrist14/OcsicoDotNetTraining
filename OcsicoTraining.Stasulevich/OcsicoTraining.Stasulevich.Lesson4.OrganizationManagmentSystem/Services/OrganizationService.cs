@@ -26,7 +26,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 
             foreach (var item in emgOrgRoles)
             {
-                await employeeOrganizationRoleRepository.RemoveAsync(item);
+                employeeOrganizationRoleRepository.Remove(item);
             }
         }
 
@@ -71,7 +71,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             {
                 var empOrgRoleRemove = CreateStagingEntity(organizationId, employeeId, (Guid)roleIdRemove);
 
-                await employeeOrganizationRoleRepository.RemoveAsync(empOrgRoleRemove);
+                employeeOrganizationRoleRepository.Remove(empOrgRoleRemove);
             }
 
             var empOrgRoleAdd = CreateStagingEntity(organizationId, employeeId, roleIdAdd);

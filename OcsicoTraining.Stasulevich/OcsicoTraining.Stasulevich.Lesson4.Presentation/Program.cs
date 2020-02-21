@@ -32,9 +32,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 
             rolesService.CreateRoleAsync(adminRole);
             rolesService.CreateRoleAsync(juniorRole);
+
             employeeService.CreateEmployeeAsync(firstEmployee);
             employeeService.CreateEmployeeAsync(secondEmployee);
             employeeService.CreateEmployeeAsync(thirdEmployee);
+
             organizationServise.AddEmployeeOrganizationAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
             organizationServise.AddEmployeeOrganizationAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
             organizationServise.AddEmployeeOrganizationAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
@@ -57,6 +59,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
             containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
             containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
+
             containerBuilder.RegisterType<RolesService>().As<IRoleService>();
             containerBuilder.RegisterType<OrganizationService>().As<IOrganizationService>();
             containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();
