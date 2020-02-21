@@ -5,7 +5,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
 {
     public interface IRoleService
     {
-        Task CreateRoleAsync(Role role);
+        Role CreateRole(string name);
         Task RemoveRoleAsync(Role role);
         Task UpdateRoleAsync(Role role);
         List<Role> GetAllRoles();

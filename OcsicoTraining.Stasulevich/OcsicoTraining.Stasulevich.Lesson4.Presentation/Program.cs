@@ -19,23 +19,16 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var employeeService = serviceProvider.GetService<IEmployeeService>();
             var rolesService = serviceProvider.GetService<IRoleService>();
 
-            var adminRole = new Role { Name = "Admin" };
-            var juniorRole = new Role { Name = "Junior" };
+            var adminRole = rolesService.CreateRole("Admin");
+            var juniorRole = rolesService.CreateRole("Junior");
 
             var orgBlizzard = organizationServise.CreateOrganization("Blizzard");
             var orgNintendo = organizationServise.CreateOrganization("Nintendo");
             var orgKyotoAnimation = organizationServise.CreateOrganization("KyotoAnimation");
 
-            var firstEmployee = new Employee { Name = "Kojima" };
-            var secondEmployee = new Employee { Name = "Kazuma" };
-            var thirdEmployee = new Employee { Name = "Subaru" };
-
-            rolesService.CreateRoleAsync(adminRole);
-            rolesService.CreateRoleAsync(juniorRole);
-
-            employeeService.CreateEmployeeAsync(firstEmployee);
-            employeeService.CreateEmployeeAsync(secondEmployee);
-            employeeService.CreateEmployeeAsync(thirdEmployee);
+            var firstEmployee = employeeService.CreateEmployee("Kojima");
+            var secondEmployee = employeeService.CreateEmployee("Kazuma");
+            var thirdEmployee = employeeService.CreateEmployee("Subaru");
 
             organizationServise.AddEmployeeOrganizationAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
             organizationServise.AddEmployeeOrganizationAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);

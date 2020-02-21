@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
@@ -13,7 +15,20 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
             this.rolesRepository = rolesRepository;
         }
 
-        public async Task CreateRoleAsync(Role role) => await rolesRepository.AddAsync(role);
+        public Role CreateRole(string name)
+        {
+            var role = new Role { Name = name};
+            var roles = rolesRepository.GetAll();
+
+            if(roles.Any(rol => rol.Id == role.Id))
+            {
+                throw new ArgumentException("Role with same Id already exist");
+            }
+
+            rolesRepository.AddAsync(role);
+
+            return role;
+        }
 
         public List<Role> GetAllRoles() => rolesRepository.GetAll();
 
