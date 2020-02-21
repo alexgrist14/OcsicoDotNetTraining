@@ -69,17 +69,17 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
         {
             if (roleIdRemove != null)
             {
-                var empOrgRoleRemove = CreateStagingEntity(organizationId, employeeId, (Guid)roleIdRemove);
+                var empOrgRoleRemove = CreateEmployeeOrganizationRole(organizationId, employeeId, (Guid)roleIdRemove);
 
                 employeeOrganizationRoleRepository.Remove(empOrgRoleRemove);
             }
 
-            var empOrgRoleAdd = CreateStagingEntity(organizationId, employeeId, roleIdAdd);
+            var empOrgRoleAdd = CreateEmployeeOrganizationRole(organizationId, employeeId, roleIdAdd);
 
             await employeeOrganizationRoleRepository.AddAsync(empOrgRoleAdd);
         }
 
-        private EmployeeOrganizationRole CreateStagingEntity(Guid organizationId, Guid employeeId, Guid roleId) => new EmployeeOrganizationRole
+        private EmployeeOrganizationRole CreateEmployeeOrganizationRole(Guid organizationId, Guid employeeId, Guid roleId) => new EmployeeOrganizationRole
         {
             EmployeeId = employeeId,
             OrganizationId = organizationId,
