@@ -22,7 +22,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             .Select(x => JsonSerializer.Deserialize<EmployeeOrganizationRole>(x))
             .ToList();
 
-        public void Remove(EmployeeOrganizationRole entity)
+        public async void Remove(EmployeeOrganizationRole entity)
         {
             var entities = GetAll();
 
@@ -31,11 +31,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllTextAsync(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 
-        public void Update(EmployeeOrganizationRole entity)
+        public async void Update(EmployeeOrganizationRole entity)
         {
             var entities = GetAll();
 
@@ -45,7 +45,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllTextAsync(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
     }

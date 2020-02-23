@@ -34,7 +34,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 
         public List<Employee> GetAllEmployees() => employeeRepository.GetAll();
 
-        public async Task RemoveEmployeeAsync(Guid id)
+        public void RemoveEmployee(Guid id)
         {
             var employee = GetAllEmployees().FirstOrDefault(emp => emp.Id == id);
 
@@ -53,6 +53,6 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             }
         }
 
-        public async Task UpdateEmployeeAsync(Employee employee) => employeeRepository.Update(employee);
+        public void UpdateEmployee(Employee employee) => employeeRepository.Update(employee);
     }
 }

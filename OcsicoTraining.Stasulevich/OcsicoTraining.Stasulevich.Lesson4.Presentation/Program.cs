@@ -22,9 +22,9 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var adminRole = rolesService.CreateRole("Admin");
             var juniorRole = rolesService.CreateRole("Junior");
 
-            var orgBlizzard = organizationServise.CreateOrganization("Blizzard");
-            var orgNintendo = organizationServise.CreateOrganization("Nintendo");
-            var orgKyotoAnimation = organizationServise.CreateOrganization("KyotoAnimation");
+            var orgBlizzard = organizationServise.CreateOrganizationAsync("Blizzard");
+            var orgNintendo = organizationServise.CreateOrganizationAsync("Nintendo");
+            var orgKyotoAnimation = organizationServise.CreateOrganizationAsync("KyotoAnimation");
 
             var firstEmployee = employeeService.CreateEmployee("Kojima");
             var secondEmployee = employeeService.CreateEmployee("Kazuma");

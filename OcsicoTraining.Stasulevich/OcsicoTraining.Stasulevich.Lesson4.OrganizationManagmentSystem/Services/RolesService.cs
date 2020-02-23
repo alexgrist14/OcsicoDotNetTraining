@@ -25,15 +25,15 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
                 throw new ArgumentException("Role with same Id already exist");
             }
 
-            rolesRepository.AddAsync(role);
+            rolesRepository.Add(role);
 
             return role;
         }
 
         public List<Role> GetAllRoles() => rolesRepository.GetAll();
 
-        public async Task RemoveRoleAsync(Role role) => rolesRepository.Remove(role);
+        public void RemoveRole(Role role) => rolesRepository.Remove(role);
 
-        public async Task UpdateRoleAsync(Role role) => rolesRepository.Update(role);
+        public void UpdateRole(Role role) => rolesRepository.Update(role);
     }
 }

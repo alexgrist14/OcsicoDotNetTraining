@@ -19,7 +19,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
-        public async Task RemoveEmployeeFromOrganizationAsync(Guid organizationId, Guid employeeId)
+        public void RemoveEmployeeFromOrganization(Guid organizationId, Guid employeeId)
         {
             var emgOrgRoles = employeeOrganizationRoleRepository.GetAll()
                  .FindAll(e => e.OrganizationId == organizationId && e.EmployeeId == employeeId);
@@ -38,9 +38,9 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             return employees;
         }
 
-        public Organization CreateOrganization(string name)
+        public Organization CreateOrganizationAsync(string name)
         {
-            var organization = new Organization { Name = name };
+            var organization = new Organization { Name = name};
             var organizations = organizationRepository.GetAll();
 
             if (organizations.Any(org => org.Id == organization.Id))
@@ -49,11 +49,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             }
 
             organizationRepository.AddAsync(organization);
-
+       
             return organization;
         }
 
-        public async Task AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId)
+        public async void AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId)
         {
             var empOrgRole = new EmployeeOrganizationRole
             {
@@ -65,7 +65,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             await employeeOrganizationRoleRepository.AddAsync(empOrgRole);
         }
 
-        public async Task AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
+        public async void AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
         {
             if (roleIdRemove != null)
             {

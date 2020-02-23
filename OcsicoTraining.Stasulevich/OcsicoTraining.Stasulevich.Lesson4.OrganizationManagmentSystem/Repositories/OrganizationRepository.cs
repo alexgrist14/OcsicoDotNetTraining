@@ -22,30 +22,30 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             .Select(x => JsonSerializer.Deserialize<Organization>(x))
             .ToList();
 
-        public void Remove(Organization entity)
+        public async void Remove(Organization entity)
         {
             var entities = GetAll();
 
-            _ = entities.RemoveAll(e => e.Id == entity.Id);
+            entities.RemoveAll(e => e.Id == entity.Id);
 
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllTextAsync(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 
-        public void Update(Organization entity)
+        public async void Update(Organization entity)
         {
             var entities = GetAll();
 
-            _ = entities.RemoveAll(e => e.Id == entity.Id);
+            entities.RemoveAll(e => e.Id == entity.Id);
             entities.Add(entity);
 
             foreach (var e in entities)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllTextAsync(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
     }

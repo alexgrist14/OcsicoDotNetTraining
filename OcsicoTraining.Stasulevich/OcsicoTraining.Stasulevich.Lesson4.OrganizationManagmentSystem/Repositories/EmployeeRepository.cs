@@ -18,35 +18,35 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             await File.AppendAllTextAsync(file, json + Environment.NewLine);
         }
 
-        public void Remove(Employee emp)
+        public async void Remove(Employee emp)
         {
             var employees = GetAll();
 
             if (employees.Contains(emp))
             {
-                _ = employees.Remove(emp);
+                employees.Remove(emp);
             }
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllTextAsync(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 
-        public void Update(Employee emp)
+        public async void Update(Employee emp)
         {
             var employees = GetAll();
 
             if (employees.Contains(emp))
             {
-                _ = employees.Remove(emp);
+                employees.Remove(emp);
                 employees.Add(emp);
             }
 
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllTextAsync(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 

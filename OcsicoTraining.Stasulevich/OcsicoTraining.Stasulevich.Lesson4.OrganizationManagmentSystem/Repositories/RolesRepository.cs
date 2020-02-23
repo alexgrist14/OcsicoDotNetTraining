@@ -14,7 +14,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
                 throw new ArgumentException("Entity doesn't exist.");
             }
 
-             base.Remove(entity);
+            base.Remove(entity);
         }
 
         public override void Update(Role entity)
