@@ -38,7 +38,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             return employees;
         }
 
-        public Organization CreateOrganizationAsync(string name)
+        public async Task<Organization> CreateOrganizationAsync(string name)
         {
             var organization = new Organization { Name = name};
             var organizations = organizationRepository.GetAll();
@@ -48,12 +48,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 throw new ArgumentException("Organization with same Id already exist");
             }
 
-            organizationRepository.AddAsync(organization);
+            await organizationRepository.AddAsync(organization);
        
             return organization;
         }
 
-        public async void AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId)
+        public async Task AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId)
         {
             var empOrgRole = new EmployeeOrganizationRole
             {

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 {
     public class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             var serviceProvider = GetServiceProvider();
             var organizationServise = serviceProvider.GetService<IOrganizationService>();
@@ -22,17 +23,17 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var adminRole = rolesService.CreateRole("Admin");
             var juniorRole = rolesService.CreateRole("Junior");
 
-            var orgBlizzard = organizationServise.CreateOrganizationAsync("Blizzard");
-            var orgNintendo = organizationServise.CreateOrganizationAsync("Nintendo");
-            var orgKyotoAnimation = organizationServise.CreateOrganizationAsync("KyotoAnimation");
+            var orgBlizzard = await organizationServise.CreateOrganizationAsync("Blizzard");
+            var orgNintendo = await organizationServise.CreateOrganizationAsync("Nintendo");
+            var orgKyotoAnimation = await organizationServise.CreateOrganizationAsync("KyotoAnimation");
 
-            var firstEmployee = employeeService.CreateEmployee("Kojima");
-            var secondEmployee = employeeService.CreateEmployee("Kazuma");
-            var thirdEmployee = employeeService.CreateEmployee("Subaru");
+            var firstEmployee = await employeeService.CreateEmployee("Kojima");
+            var secondEmployee = await employeeService.CreateEmployee("Kazuma");
+            var thirdEmployee = await employeeService.CreateEmployee("Subaru");
 
-            organizationServise.AddEmployeeOrganizationAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
-            organizationServise.AddEmployeeOrganizationAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
-            organizationServise.AddEmployeeOrganizationAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
+            await organizationServise.AddEmployeeOrganizationAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
+            await organizationServise.AddEmployeeOrganizationAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
+            await organizationServise.AddEmployeeOrganizationAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
 
             var employees = organizationServise.GetAllEmployees(orgBlizzard.Id);
 

@@ -17,7 +17,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
-        public Employee CreateEmployee(string name)
+        public async Task<Employee> CreateEmployee(string name)
         {
             var employee = new Employee { Name = name };
             var employees = employeeRepository.GetAll();
@@ -27,7 +27,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 throw new ArgumentException("Employee with same Id already exist");
             }
 
-            employeeRepository.AddAsync(employee);
+            await employeeRepository.AddAsync(employee);
 
             return employee;
         }

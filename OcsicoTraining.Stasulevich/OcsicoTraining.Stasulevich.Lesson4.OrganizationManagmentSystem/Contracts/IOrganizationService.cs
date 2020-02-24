@@ -6,10 +6,10 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
 {
     public interface IOrganizationService
     {
-        Organization CreateOrganizationAsync(string name);
+        Task<Organization> CreateOrganizationAsync(string name);
         List<Employee> GetAllEmployees(Guid organizationId);
         void RemoveEmployeeFromOrganization(Guid organizationId, Guid employeeId);
-        void AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId);
+        Task AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId);
         void AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleAdd, Guid? roleRemove);
     }
 }
