@@ -8,8 +8,8 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
     {
         IQueryable<T> GetQuery();
         Task AddAsync(T entity);
-        void Remove(T entity);
-        void Update(T entity);
+        Task RemoveAsync(T entity);
+        Task UpdateAsync(T entity);
         List<T> GetAll();
     }
 }

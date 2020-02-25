@@ -10,6 +10,6 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
         List<Employee> GetAllEmployees(Guid organizationId);
         void RemoveEmployeeFromOrganization(Guid organizationId, Guid employeeId);
         Task AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId);
-        void AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleAdd, Guid? roleRemove);
+        Task AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleAdd, Guid? roleRemove);
     }
 }
