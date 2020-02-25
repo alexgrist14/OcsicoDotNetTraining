@@ -40,7 +40,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 
         public async Task<Organization> CreateAsync(string name)
         {
-            var organization = new Organization { Name = name};
+            var organization = new Organization { Name = name };
             var organizations = organizationRepository.GetAll();
 
             if (organizations.Any(org => org.Id == organization.Id))
@@ -49,7 +49,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             }
 
             await organizationRepository.AddAsync(organization);
-       
+
             return organization;
         }
 
