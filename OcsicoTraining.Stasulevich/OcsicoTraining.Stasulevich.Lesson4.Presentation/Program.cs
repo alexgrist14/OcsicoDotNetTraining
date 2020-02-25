@@ -23,17 +23,17 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var adminRole = rolesService.CreateRole("Admin");
             var juniorRole = rolesService.CreateRole("Junior");
 
-            var orgBlizzard = await organizationServise.CreateOrganizationAsync("Blizzard");
-            var orgNintendo = await organizationServise.CreateOrganizationAsync("Nintendo");
-            var orgKyotoAnimation = await organizationServise.CreateOrganizationAsync("KyotoAnimation");
+            var orgBlizzard = await organizationServise.CreateAsync("Blizzard");
+            var orgNintendo = await organizationServise.CreateAsync("Nintendo");
+            var orgKyotoAnimation = await organizationServise.CreateAsync("KyotoAnimation");
 
-            var firstEmployee = await employeeService.CreateEmployee("Kojima");
-            var secondEmployee = await employeeService.CreateEmployee("Kazuma");
-            var thirdEmployee = await employeeService.CreateEmployee("Subaru");
+            var firstEmployee = await employeeService.CreateAsync("Kojima");
+            var secondEmployee = await employeeService.CreateAsync("Kazuma");
+            var thirdEmployee = await employeeService.CreateAsync("Subaru");
 
-            await organizationServise.AddEmployeeOrganizationAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
-            await organizationServise.AddEmployeeOrganizationAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
-            await organizationServise.AddEmployeeOrganizationAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
+            await organizationServise.AddEmployeeAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
+            await organizationServise.AddEmployeeAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
+            await organizationServise.AddEmployeeAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
 
             var employees = organizationServise.GetAllEmployees(orgBlizzard.Id);
 

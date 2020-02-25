@@ -6,9 +6,9 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 {
     public interface IEmployeeService
     {
-        Task<Employee> CreateEmployee(string name);
-        void RemoveEmployee(Guid id);
-        void UpdateEmployee(Employee employee);
-        List<Employee> GetAllEmployees();
+        Task<Employee> CreateAsync(string name);
+        Task RemoveAsync(Guid id);
+        Task UpdateAsync(Employee employee);
+        List<Employee> GetAll();
     }
 }
