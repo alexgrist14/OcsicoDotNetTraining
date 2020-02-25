@@ -4,50 +4,61 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository<T> : IEmployeeRepository 
     {
         private readonly string file = "employees.txt";
+        protected DbSet<Employee> EntitiesSet { get; private set; }
+
+        public EmployeeRepository(IDataContext dataContext)
+        {
+            EntitiesSet = dataContext.Set<T>();
+        }
 
         public async Task AddAsync(Employee emp)
         {
-            var json = JsonSerializer.Serialize(emp);
-            await File.AppendAllTextAsync(file, json + Environment.NewLine);
+            if (emp == null)
+            {
+                throw new ArgumentNullException(nameof(emp));
+            }
+
+            EntitiesSet.Attach(emp);
+            EntitiesSet.Add(emp);
         }
 
-        public async void Remove(Employee emp)
-        {
-            var employees = GetAll();
+        public IQueryable<Employee> GetQuery() => EntitiesSet;
 
-            if (employees.Contains(emp))
+        public void Remove(Employee emp)
+        {
+            if (emp == null)
             {
-                employees.Remove(emp);
+                throw new ArgumentNullException(nameof(emp));
             }
-            foreach (var e in employees)
-            {
-                var json = JsonSerializer.Serialize(e);
-                await File.AppendAllTextAsync(file, json);
-            }
+
+            EntitiesSet.Attach(emp);
+            EntitiesSet.Remove(emp);
         }
 
-        public async void Update(Employee emp)
+        public void Remove(Guid id)
         {
-            var employees = GetAll();
+            var employee = EntitiesSet.FirstOrDefault(x => x.Id == id);
+            Remove(employee);
+        }
 
-            if (employees.Contains(emp))
+        public void Update(Employee emp)
+        {
+            if (emp == null)
             {
-                employees.Remove(emp);
-                employees.Add(emp);
+                throw new ArgumentNullException(nameof(emp));
             }
 
-            foreach (var e in employees)
-            {
-                var json = JsonSerializer.Serialize(e);
-                await File.AppendAllTextAsync(file, json);
-            }
+            EntitiesSet.Attach(emp);
+            EntitiesSet.Update(emp);
         }
 
         public List<Employee> GetAll() => File.ReadAllLines(file)
