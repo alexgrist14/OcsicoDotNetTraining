@@ -22,7 +22,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             .Select(x => JsonSerializer.Deserialize<EmployeeOrganizationRole>(x))
             .ToList();
 
-        public async void Remove(EmployeeOrganizationRole entity)
+        public async Task RemoveAsync(EmployeeOrganizationRole entity)
         {
             var entities = GetAll();
 
@@ -35,7 +35,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             }
         }
 
-        public async void Update(EmployeeOrganizationRole entity)
+        public async Task UpdateAsync(EmployeeOrganizationRole entity)
         {
             var entities = GetAll();
 

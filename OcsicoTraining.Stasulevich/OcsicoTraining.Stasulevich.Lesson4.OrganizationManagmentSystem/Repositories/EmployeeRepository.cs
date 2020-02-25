@@ -18,7 +18,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             await File.AppendAllTextAsync(file, json + Environment.NewLine);
         }
 
-        public async void Remove(Employee emp)
+        public async Task RemoveAsync(Employee emp)
         {
             var employees = GetAll();
 
@@ -33,7 +33,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             }
         }
 
-        public async void Update(Employee emp)
+        public async Task UpdateAsync(Employee emp)
         {
             var employees = GetAll();
 

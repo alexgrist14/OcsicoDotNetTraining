@@ -43,16 +43,16 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 throw new ArgumentException("Employee with that id doesn't exist");
             }
 
-            employeeRepository.Remove(employee);
+            employeeRepository.RemoveAsync(employee);
 
             var stagEntity = employeeOrganizationRoleRepository.GetAll().FindAll(e => e.EmployeeId == id);
 
             foreach (var item in stagEntity)
             {
-                employeeOrganizationRoleRepository.Remove(item);
+                employeeOrganizationRoleRepository.RemoveAsync(item);
             }
         }
 
-        public void UpdateEmployee(Employee employee) => employeeRepository.Update(employee);
+        public void UpdateEmployee(Employee employee) => employeeRepository.UpdateAsync(employee);
     }
 }
