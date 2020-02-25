@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
@@ -11,41 +12,41 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
     {
         private readonly string file = "employees.txt";
 
-        public void Add(Employee emp)
+        public async Task AddAsync(Employee emp)
         {
             var json = JsonSerializer.Serialize(emp);
-            File.AppendAllText(file, json + Environment.NewLine);
+            await File.AppendAllTextAsync(file, json + Environment.NewLine);
         }
 
-        public void Remove(Employee emp)
+        public async Task RemoveAsync(Employee emp)
         {
             var employees = GetAll();
 
             if (employees.Contains(emp))
             {
-                _ = employees.Remove(emp);
+                employees.Remove(emp);
             }
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 
-        public void Update(Employee emp)
+        public async Task UpdateAsync(Employee emp)
         {
             var employees = GetAll();
 
             if (employees.Contains(emp))
             {
-                _ = employees.Remove(emp);
+                employees.Remove(emp);
                 employees.Add(emp);
             }
 
             foreach (var e in employees)
             {
                 var json = JsonSerializer.Serialize(e);
-                File.AppendAllText(file, json);
+                await File.AppendAllTextAsync(file, json);
             }
         }
 

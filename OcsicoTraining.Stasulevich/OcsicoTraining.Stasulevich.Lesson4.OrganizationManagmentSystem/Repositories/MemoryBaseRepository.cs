@@ -1,13 +1,17 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public abstract class MemoryBaseRepository<T> : IRepository<T> where T : class
+    public abstract class MemoryBaseRepository<T> : IMemoryBaseRepository<T> where T : class
     {
         protected readonly List<T> Entities;
 
-        protected MemoryBaseRepository() => Entities = new List<T>();
+        protected MemoryBaseRepository()
+        {
+            Entities = new List<T>();
+        }
 
         public void Add(T entity) => Entities.Add(entity);
 
@@ -17,7 +21,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
 
         public virtual void Update(T entity)
         {
-            _ = Entities.Remove(entity);
+            Entities.Remove(entity);
             Entities.Add(entity);
         }
     }

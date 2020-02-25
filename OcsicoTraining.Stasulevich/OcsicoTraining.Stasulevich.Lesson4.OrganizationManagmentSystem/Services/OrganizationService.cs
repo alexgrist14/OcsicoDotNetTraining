@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
@@ -18,14 +19,14 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
-        public void RemoveEmployeeFromOrganization(Guid organizationId, Guid employeeId)
+        public async Task RemoveEmployeeAsync(Guid organizationId, Guid employeeId)
         {
             var emgOrgRoles = employeeOrganizationRoleRepository.GetAll()
                  .FindAll(e => e.OrganizationId == organizationId && e.EmployeeId == employeeId);
 
             foreach (var item in emgOrgRoles)
             {
-                employeeOrganizationRoleRepository.Remove(item);
+                await employeeOrganizationRoleRepository.RemoveAsync(item);
             }
         }
 
@@ -37,7 +38,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             return employees;
         }
 
-        public Organization CreateOrganization(string name)
+        public async Task<Organization> CreateAsync(string name)
         {
             var organization = new Organization { Name = name };
             var organizations = organizationRepository.GetAll();
@@ -47,12 +48,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 throw new ArgumentException("Organization with same Id already exist");
             }
 
-            organizationRepository.Add(organization);
+            await organizationRepository.AddAsync(organization);
 
             return organization;
         }
 
-        public void AddEmployeeOrganization(Guid organizationId, Guid employeeId, Guid roleId)
+        public async Task AddEmployeeAsync(Guid organizationId, Guid employeeId, Guid roleId)
         {
             var empOrgRole = new EmployeeOrganizationRole
             {
@@ -61,24 +62,24 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 RoleId = roleId
             };
 
-            employeeOrganizationRoleRepository.Add(empOrgRole);
+            await employeeOrganizationRoleRepository.AddAsync(empOrgRole);
         }
 
-        public void AssignEmployeeToNewRole(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
+        public async Task AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
         {
             if (roleIdRemove != null)
             {
-                var empOrgRoleRemove = CreateStagingEntity(organizationId, employeeId, (Guid)roleIdRemove);
+                var empOrgRoleRemove = CreateEmployeeOrganizationRole(organizationId, employeeId, (Guid)roleIdRemove);
 
-                employeeOrganizationRoleRepository.Remove(empOrgRoleRemove);
+                await employeeOrganizationRoleRepository.RemoveAsync(empOrgRoleRemove);
             }
 
-            var empOrgRoleAdd = CreateStagingEntity(organizationId, employeeId, roleIdAdd);
+            var empOrgRoleAdd = CreateEmployeeOrganizationRole(organizationId, employeeId, roleIdAdd);
 
-            employeeOrganizationRoleRepository.Add(empOrgRoleAdd);
+            await employeeOrganizationRoleRepository.AddAsync(empOrgRoleAdd);
         }
 
-        private EmployeeOrganizationRole CreateStagingEntity(Guid organizationId, Guid employeeId, Guid roleId) => new EmployeeOrganizationRole
+        private EmployeeOrganizationRole CreateEmployeeOrganizationRole(Guid organizationId, Guid employeeId, Guid roleId) => new EmployeeOrganizationRole
         {
             EmployeeId = employeeId,
             OrganizationId = organizationId,

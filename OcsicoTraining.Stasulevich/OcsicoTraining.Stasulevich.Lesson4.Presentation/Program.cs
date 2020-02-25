@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,32 +13,27 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 {
     public class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             var serviceProvider = GetServiceProvider();
             var organizationServise = serviceProvider.GetService<IOrganizationService>();
             var employeeService = serviceProvider.GetService<IEmployeeService>();
             var rolesService = serviceProvider.GetService<IRoleService>();
 
-            var adminRole = new Role { Name = "Admin" };
-            var juniorRole = new Role { Name = "Junior" };
+            var adminRole = rolesService.CreateRole("Admin");
+            var juniorRole = rolesService.CreateRole("Junior");
 
-            var orgBlizzard = organizationServise.CreateOrganization("Blizzard");
-            var orgNintendo = organizationServise.CreateOrganization("Nintendo");
-            var orgKyotoAnimation = organizationServise.CreateOrganization("KyotoAnimation");
+            var orgBlizzard = await organizationServise.CreateAsync("Blizzard");
+            var orgNintendo = await organizationServise.CreateAsync("Nintendo");
+            var orgKyotoAnimation = await organizationServise.CreateAsync("KyotoAnimation");
 
-            var firstEmployee = new Employee { Name = "Kojima" };
-            var secondEmployee = new Employee { Name = "Kazuma" };
-            var thirdEmployee = new Employee { Name = "Subaru" };
+            var firstEmployee = await employeeService.CreateAsync("Kojima");
+            var secondEmployee = await employeeService.CreateAsync("Kazuma");
+            var thirdEmployee = await employeeService.CreateAsync("Subaru");
 
-            rolesService.CreateRole(adminRole);
-            rolesService.CreateRole(juniorRole);
-            employeeService.CreateEmployee(firstEmployee);
-            employeeService.CreateEmployee(secondEmployee);
-            employeeService.CreateEmployee(thirdEmployee);
-            organizationServise.AddEmployeeOrganization(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
-            organizationServise.AddEmployeeOrganization(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
-            organizationServise.AddEmployeeOrganization(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
+            await organizationServise.AddEmployeeAsync(orgBlizzard.Id, firstEmployee.Id, adminRole.Id);
+            await organizationServise.AddEmployeeAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
+            await organizationServise.AddEmployeeAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
 
             var employees = organizationServise.GetAllEmployees(orgBlizzard.Id);
 
@@ -57,6 +53,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
             containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
             containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
+
             containerBuilder.RegisterType<RolesService>().As<IRoleService>();
             containerBuilder.RegisterType<OrganizationService>().As<IOrganizationService>();
             containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();

@@ -4,7 +4,10 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 {
     public class Role
     {
-        public Role() => Id = Guid.NewGuid();
+        public Role()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public Guid Id { get; }
 
