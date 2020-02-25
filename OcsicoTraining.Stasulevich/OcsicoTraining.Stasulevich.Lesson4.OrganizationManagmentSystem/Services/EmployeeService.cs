@@ -17,7 +17,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
-        public async Task<Employee> CreateEmployee(string name)
+        public async Task<Employee> CreateAsync(string name)
         {
             var employee = new Employee { Name = name };
             var employees = employeeRepository.GetAll();
@@ -32,28 +32,28 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             return employee;
         }
 
-        public List<Employee> GetAllEmployees() => employeeRepository.GetAll();
+        public List<Employee> GetAll() => employeeRepository.GetAll();
 
-        public void RemoveEmployee(Guid id)
+        public async Task RemoveAsync(Guid id)
         {
-            var employee = GetAllEmployees().FirstOrDefault(emp => emp.Id == id);
+            var employee = GetAll().FirstOrDefault(emp => emp.Id == id);
 
             if (employee == null)
             {
                 throw new ArgumentException("Employee with that id doesn't exist");
             }
 
-            employeeRepository.RemoveAsync(employee);
+            await employeeRepository.RemoveAsync(employee);
 
             var stagEntity = employeeOrganizationRoleRepository.GetAll().FindAll(e => e.EmployeeId == id);
 
             foreach (var item in stagEntity)
             {
-                employeeOrganizationRoleRepository.RemoveAsync(item);
+                await employeeOrganizationRoleRepository.RemoveAsync(item);
             }
 
         }
 
-        public void UpdateEmployee(Employee employee) => employeeRepository.UpdateAsync(employee);
+        public Task UpdateAsync(Employee employee) => employeeRepository.UpdateAsync(employee);
     }
 }

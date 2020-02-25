@@ -19,14 +19,14 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
         }
 
-        public void RemoveEmployeeFromOrganization(Guid organizationId, Guid employeeId)
+        public async Task RemoveEmployeeAsync(Guid organizationId, Guid employeeId)
         {
             var emgOrgRoles = employeeOrganizationRoleRepository.GetAll()
                  .FindAll(e => e.OrganizationId == organizationId && e.EmployeeId == employeeId);
 
             foreach (var item in emgOrgRoles)
             {
-                employeeOrganizationRoleRepository.RemoveAsync(item);
+                await employeeOrganizationRoleRepository.RemoveAsync(item);
             }
         }
 
@@ -38,9 +38,9 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             return employees;
         }
 
-        public async Task<Organization> CreateOrganizationAsync(string name)
+        public async Task<Organization> CreateAsync(string name)
         {
-            var organization = new Organization { Name = name};
+            var organization = new Organization { Name = name };
             var organizations = organizationRepository.GetAll();
 
             if (organizations.Any(org => org.Id == organization.Id))
@@ -49,11 +49,11 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             }
 
             await organizationRepository.AddAsync(organization);
-       
+
             return organization;
         }
 
-        public async Task AddEmployeeOrganizationAsync(Guid organizationId, Guid employeeId, Guid roleId)
+        public async Task AddEmployeeAsync(Guid organizationId, Guid employeeId, Guid roleId)
         {
             var empOrgRole = new EmployeeOrganizationRole
             {

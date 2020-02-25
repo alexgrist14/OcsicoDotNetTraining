@@ -4,7 +4,7 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public abstract class MemoryBaseRepository<T> :IMemoryBaseRepository<T> where T : class
+    public abstract class MemoryBaseRepository<T> : IMemoryBaseRepository<T> where T : class
     {
         protected readonly List<T> Entities;
 
