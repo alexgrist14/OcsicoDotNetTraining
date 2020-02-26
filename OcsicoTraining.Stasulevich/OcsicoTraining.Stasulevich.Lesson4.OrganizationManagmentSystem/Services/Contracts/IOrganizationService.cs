@@ -7,9 +7,13 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
     public interface IOrganizationService
     {
         Task<Organization> CreateAsync(string name);
-        List<Employee> GetAllEmployees(Guid organizationId);
-        Task RemoveEmployeeAsync(Guid organizationId, Guid employeeId);
+
         Task AddEmployeeAsync(Guid organizationId, Guid employeeId, Guid roleId);
+
+        Task RemoveEmployeeAsync(Guid organizationId, Guid employeeId);
+
         Task AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleAdd, Guid? roleRemove);
+
+        Task<List<Employee>> GetEmployeesAsync(Guid organizationId);
     }
 }

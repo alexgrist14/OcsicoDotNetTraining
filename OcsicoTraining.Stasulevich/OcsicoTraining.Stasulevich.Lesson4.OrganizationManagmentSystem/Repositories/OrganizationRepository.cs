@@ -4,49 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories
 {
-    public class OrganizationRepository : IOrganizationRepository
+    public class OrganizationRepository : AppEntityRepository<Organization>, IOrganizationRepository
     {
-        private readonly string file = "organizations.txt";
-
-        public async Task AddAsync(Organization entity)
+        public OrganizationRepository(IDataContext dataContext) : base(dataContext)
         {
-            var json = JsonSerializer.Serialize(entity);
-            await File.AppendAllTextAsync(file, json + Environment.NewLine);
-        }
-
-        public List<Organization> GetAll() => File.ReadAllLines(file)
-            .Select(x => JsonSerializer.Deserialize<Organization>(x))
-            .ToList();
-
-        public async Task RemoveAsync(Organization entity)
-        {
-            var entities = GetAll();
-
-            entities.RemoveAll(e => e.Id == entity.Id);
-
-            foreach (var e in entities)
-            {
-                var json = JsonSerializer.Serialize(e);
-                await File.AppendAllTextAsync(file, json);
-            }
-        }
-
-        public async Task UpdateAsync(Organization entity)
-        {
-            var entities = GetAll();
-
-            entities.RemoveAll(e => e.Id == entity.Id);
-            entities.Add(entity);
-
-            foreach (var e in entities)
-            {
-                var json = JsonSerializer.Serialize(e);
-                await File.AppendAllTextAsync(file, json);
-            }
         }
     }
 }

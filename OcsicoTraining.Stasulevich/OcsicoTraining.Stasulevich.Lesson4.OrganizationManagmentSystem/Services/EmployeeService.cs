@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
@@ -10,49 +10,37 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
     {
         private readonly IEmployeeRepository employeeRepository;
         private readonly IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository;
+        private readonly IDataContext dataContext;
 
-        public EmployeeService(IEmployeeRepository employeeRepository, IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository)
+        public EmployeeService(IEmployeeRepository employeeRepository, IEmployeeOrganizationRoleRepository employeeOrganizationRoleRepository, IDataContext dataContext)
         {
             this.employeeRepository = employeeRepository;
             this.employeeOrganizationRoleRepository = employeeOrganizationRoleRepository;
+            this.dataContext = dataContext;
         }
 
         public async Task<Employee> CreateAsync(string name)
         {
             var employee = new Employee { Name = name };
-            var employees = employeeRepository.GetAll();
-
-            if (employees.Any(emp => emp.Id == employee.Id))
-            {
-                throw new ArgumentException("Employee with same Id already exist");
-            }
 
             await employeeRepository.AddAsync(employee);
+            await dataContext.SaveChangesAsync();
 
             return employee;
         }
 
-        public List<Employee> GetAll() => employeeRepository.GetAll();
+        public async Task<List<Employee>> GetAsync() => await employeeRepository.GetQuery().ToListAsync();
 
-        public async Task RemoveAsync(Guid id)
+        public async Task RemoveAsync(Employee employee)
         {
-            var employee = GetAll().FirstOrDefault(emp => emp.Id == id);
-
-            if (employee == null)
-            {
-                throw new ArgumentException("Employee with that id doesn't exist");
-            }
-
-            await employeeRepository.RemoveAsync(employee);
-
-            var stagEntity = employeeOrganizationRoleRepository.GetAll().FindAll(e => e.EmployeeId == id);
-
-            foreach (var item in stagEntity)
-            {
-                await employeeOrganizationRoleRepository.RemoveAsync(item);
-            }
+            employeeRepository.Remove(employee);
+            await dataContext.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(Employee employee) => employeeRepository.UpdateAsync(employee);
+        public async Task UpdateAsync(Employee employee)
+        {
+            employeeRepository.Update(employee);
+            await dataContext.SaveChangesAsync();
+        }
     }
 }

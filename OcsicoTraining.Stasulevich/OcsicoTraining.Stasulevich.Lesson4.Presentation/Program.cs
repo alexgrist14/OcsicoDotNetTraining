@@ -1,12 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services;
 
 
 namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
@@ -15,13 +11,14 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
     {
         public static async Task Main()
         {
-            var serviceProvider = GetServiceProvider();
+            var serviceProvider = DependencyInjection.GetServiceProvider();
+
             var organizationServise = serviceProvider.GetService<IOrganizationService>();
             var employeeService = serviceProvider.GetService<IEmployeeService>();
             var rolesService = serviceProvider.GetService<IRoleService>();
 
-            var adminRole = rolesService.CreateRole("Admin");
-            var juniorRole = rolesService.CreateRole("Junior");
+            var adminRole = await rolesService.CreateAsync("Admin");
+            var juniorRole = await rolesService.CreateAsync("Junior");
 
             var orgBlizzard = await organizationServise.CreateAsync("Blizzard");
             var orgNintendo = await organizationServise.CreateAsync("Nintendo");
@@ -35,32 +32,21 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             await organizationServise.AddEmployeeAsync(orgNintendo.Id, secondEmployee.Id, juniorRole.Id);
             await organizationServise.AddEmployeeAsync(orgKyotoAnimation.Id, thirdEmployee.Id, adminRole.Id);
 
-            var employees = organizationServise.GetAllEmployees(orgBlizzard.Id);
+            Console.WriteLine("All Employees:");
 
-            foreach (var employee in employees)
+            var allEmployees = await employeeService.GetAsync();
+
+            foreach (var employee in allEmployees)
             {
-                Console.WriteLine($"{employee.Id} {employee.Name}");
+                Console.WriteLine($"Employee: {employee.Id} {employee.Name}");
+
+                foreach (var employeeRole in employee.EmployeeOrganizationRoles)
+                {
+                    Console.WriteLine($"Company: {employeeRole.Organization.Name}, Role: {employeeRole.Role.Name}");
+                }
+
+                Console.WriteLine(new string('-', 30));
             }
-        }
-
-        private static IServiceProvider GetServiceProvider()
-        {
-            var serviceCollection = new ServiceCollection();
-            var containerBuilder = new ContainerBuilder();
-
-            containerBuilder.Populate(serviceCollection);
-            containerBuilder.RegisterType<RolesRepository>().As<IRolesRepository>();
-            containerBuilder.RegisterType<EmployeeOrganizationRoleRepository>().As<IEmployeeOrganizationRoleRepository>();
-            containerBuilder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>();
-            containerBuilder.RegisterType<OrganizationRepository>().As<IOrganizationRepository>();
-
-            containerBuilder.RegisterType<RolesService>().As<IRoleService>();
-            containerBuilder.RegisterType<OrganizationService>().As<IOrganizationService>();
-            containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();
-
-            var container = containerBuilder.Build();
-
-            return new AutofacServiceProvider(container);
         }
     }
 }
