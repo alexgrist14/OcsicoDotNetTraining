@@ -20,7 +20,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
             var containerBuilder = new ContainerBuilder();
 
             serviceCollection.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer("Server=DESKTOP-H65FSEA\\MSSQLSERVER05;Database=Organization;Trusted_Connection=True;User Id=naruto;Password=anime")
+                options.UseSqlServer("Server=DESKTOP-H65FSEA\\MSSQLSERVER05;Database=OrganizationManagment;Trusted_Connection=True;")
                     .UseLazyLoadingProxies()
                     .EnableSensitiveDataLogging());
 
