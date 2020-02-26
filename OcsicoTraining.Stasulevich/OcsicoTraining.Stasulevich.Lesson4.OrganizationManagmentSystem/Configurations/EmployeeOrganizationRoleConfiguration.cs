@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -18,15 +15,15 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Configu
             builder.HasOne(x => x.Employee)
                 .WithMany(x => x.EmployeeOrganizationRoles)
                 .HasForeignKey(x => x.EmployeeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(x => x.Organization)
                 .WithMany(x => x.EmployeeOrganizationRoles)
                 .HasForeignKey(x => x.OrganizationId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(x => x.Role)
                 .WithMany(x => x.EmployeeOrganizationRoles)
                 .HasForeignKey(x => x.RoleId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable("EmployeeOrganizationRoles");
         }

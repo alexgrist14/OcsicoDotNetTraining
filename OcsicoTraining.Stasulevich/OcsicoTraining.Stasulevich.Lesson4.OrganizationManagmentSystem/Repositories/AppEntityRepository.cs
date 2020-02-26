@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Models.Contracts;
@@ -18,7 +18,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
 
         protected DbSet<T> EntitiesSet { get; private set; }
 
-        public void Add(T entity)
+        public async Task AddAsync(T entity)
         {
             if (entity == null)
             {
@@ -26,7 +26,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
             }
 
             EntitiesSet.Attach(entity);
-            EntitiesSet.Add(entity);
+            await EntitiesSet.AddAsync(entity);
         }
 
         public IQueryable<T> GetQuery() => EntitiesSet;
@@ -46,6 +46,17 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Reposit
         {
             var entity = EntitiesSet.FirstOrDefault(x => x.Id == id);
             Remove(entity);
+        }
+
+        public void RemoveRange(List<T> entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            EntitiesSet.AttachRange(entity);
+            EntitiesSet.RemoveRange(entity);
         }
 
         public void Update(T entity)

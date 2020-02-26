@@ -1,39 +1,44 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services
 {
     public class RolesService : IRoleService
     {
-        private readonly IRolesRepository rolesRepository;
+        private readonly IRoleRepository roleRepository;
+        private readonly IDataContext dataContext;
 
-        public RolesService(IRolesRepository rolesRepository)
+        public RolesService(IRoleRepository rolesRepository, IDataContext dataContext)
         {
-            this.rolesRepository = rolesRepository;
+            this.roleRepository = rolesRepository;
+            this.dataContext = dataContext;
         }
 
-        public Role CreateRole(string name)
+        public async Task<Role> CreateAsync(string name)
         {
-            var role = new Role { Name = name};
-            var roles = rolesRepository.GetAll();
+            var role = new Role { Name = name };
 
-            if(roles.Any(rol => rol.Id == role.Id))
-            {
-                throw new ArgumentException("Role with same Id already exist");
-            }
-
-            rolesRepository.Add(role);
+            await roleRepository.AddAsync(role);
+            await dataContext.SaveChangesAsync();
 
             return role;
         }
 
-        public List<Role> GetAllRoles() => rolesRepository.GetAll();
+        public async Task<List<Role>> GetAsync() => await roleRepository.GetQuery().ToListAsync();
 
-        public void RemoveRole(Role role) => rolesRepository.Remove(role);
+        public async Task RemoveAsync(Role role)
+        {
+            roleRepository.Remove(role);
+            await dataContext.SaveChangesAsync();
+        }
 
-        public void UpdateRole(Role role) => rolesRepository.Update(role);
+        public async Task UpdateAsync(Role role)
+        {
+            roleRepository.Update(role);
+            await dataContext.SaveChangesAsync();
+        }
     }
 }

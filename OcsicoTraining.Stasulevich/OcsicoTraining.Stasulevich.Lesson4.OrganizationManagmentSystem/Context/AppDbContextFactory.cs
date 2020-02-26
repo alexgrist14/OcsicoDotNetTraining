@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
@@ -11,9 +8,9 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("Server=.\\MSSQLSERVER05;Database=OrganizationManagment;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-H65FSEA\\MSSQLSERVER05;Database=OrganizationManagment;Trusted_Connection=True;");
 
-            return  new AppDbContext(optionsBuilder.Options);
+            return new AppDbContext(optionsBuilder.Options);
         }
     }
 }

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
@@ -8,7 +6,7 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Models.Cont
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context
 {
-    public class DataContext: IDataContext
+    public class DataContext : IDataContext
     {
         private readonly AppDbContext appDbContext;
 

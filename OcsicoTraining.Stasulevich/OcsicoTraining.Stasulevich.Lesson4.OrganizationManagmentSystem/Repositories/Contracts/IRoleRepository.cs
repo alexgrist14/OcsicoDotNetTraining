@@ -2,7 +2,7 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositorie
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts
 {
-    public interface IEmployeeOrganizationRoleRepository : IAppEntityRepository<EmployeeOrganizationRole>
+    public interface IRoleRepository : IAppEntityRepository<Role>
     {
     }
 }
