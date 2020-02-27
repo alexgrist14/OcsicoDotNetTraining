@@ -46,6 +46,7 @@ obj/
 .vs/
 /*.*/bin
 /*.*/obj
+/OcsicoDotNetTraining/OcsicoTraining.Stasulevich/OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment/wwwroot/lib
 
 # NUNIT
 *.VisualState.xml
@@ -346,3 +347,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/OcsicoTraining.Stasulevich/OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment/wwwroot/lib
