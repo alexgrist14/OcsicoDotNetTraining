@@ -9,6 +9,7 @@ using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Con
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Repositories;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.Presentation
 {

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services.Contracts;
 
 
 namespace OcsicoTraining.Stasulevich.Lesson4.Presentation

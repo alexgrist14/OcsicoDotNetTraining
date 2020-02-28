@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.ViewModels;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services
 {
@@ -28,7 +29,20 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
             return role;
         }
 
+        public async Task<CreateRoleViewModel> CreateAsync(CreateRoleViewModel roleModel)
+        {
+            var role = new Role { Name = roleModel.Name };
+
+            await roleRepository.AddAsync(role);
+            await dataContext.SaveChangesAsync();
+
+            return new CreateRoleViewModel { Name = role.Name };
+        }
+
         public async Task<List<Role>> GetAsync() => await roleRepository.GetQuery().ToListAsync();
+
+        public async Task<Role> GetAsync(Guid id) =>
+            await roleRepository.GetQuery().FirstOrDefaultAsync(r => r.Id == id);
 
         public async Task RemoveAsync(Role role)
         {

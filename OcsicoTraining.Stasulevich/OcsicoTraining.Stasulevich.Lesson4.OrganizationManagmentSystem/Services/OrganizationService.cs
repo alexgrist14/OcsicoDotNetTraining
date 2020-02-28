@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Context.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
+using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.ViewModels;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
 {
@@ -33,6 +34,16 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             return organization;
         }
 
+        public async Task<CreateOrganizationViewModel> CreateAsync(CreateOrganizationViewModel organizationModel)
+        {
+            var organization = new Organization { Name = organizationModel.Name };
+
+            await organizationRepository.AddAsync(organization);
+            await dataContext.SaveChangesAsync();
+
+            return new CreateOrganizationViewModel { Name = organizationModel.Name };
+        }
+
         public async Task AddEmployeeAsync(Guid organizationId, Guid employeeId, Guid roleId)
         {
             var empOrgRole = CreateEmployeeOrganizationRole(organizationId, employeeId, roleId);
@@ -52,6 +63,17 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             await dataContext.SaveChangesAsync();
         }
 
+        public async Task RemoveEmployeeAsync(RemoveEmployeeViewModel model)
+        {
+            var empOrgRoles = await employeeOrganizationRoleRepository
+                .GetQuery()
+                .Where(e => e.OrganizationId == model.OrganizationId && e.EmployeeId == model.EmployeeId)
+                .ToListAsync();
+
+            employeeOrganizationRoleRepository.RemoveRange(empOrgRoles);
+            await dataContext.SaveChangesAsync();
+        }
+
         public async Task AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleIdAdd, Guid? roleIdRemove)
         {
             if (roleIdRemove != null)
@@ -66,6 +88,12 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
             await employeeOrganizationRoleRepository.AddAsync(empOrgRoleAdd);
             await dataContext.SaveChangesAsync();
         }
+
+        public async Task<List<Organization>> GetAsync() =>
+            await organizationRepository.GetQuery().ToListAsync();
+
+        public async Task<Organization> GetAsync(Guid id) =>
+            await organizationRepository.GetQuery().FirstOrDefaultAsync(e => e.Id == id);
 
         public async Task<List<Employee>> GetEmployeesAsync(Guid organizationId)
         {
