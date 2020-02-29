@@ -20,6 +20,7 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
         Task AssignEmployeeToNewRoleAsync(Guid organizationId, Guid employeeId, Guid roleAdd, Guid? roleRemove);
 
         Task<List<Organization>> GetAsync();
+
         Task<Organization> GetAsync(Guid id);
 
         Task<List<Employee>> GetEmployeesAsync(Guid organizationId);

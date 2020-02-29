@@ -27,10 +27,8 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.ConfigureAppSettings(Configuration);
             services.ConfigureDataContext(Configuration);
             services.ConfigureDependencies();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

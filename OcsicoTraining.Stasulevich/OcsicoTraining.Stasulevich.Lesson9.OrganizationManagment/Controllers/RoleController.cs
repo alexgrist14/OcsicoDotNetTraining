@@ -26,7 +26,7 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
-            var role = await roleService.GetAsync(id);
+            var role = await roleService.GetViewModelAsync(id);
 
             return View(role);
         }
@@ -39,50 +39,48 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateRoleViewModel roleModel)
+        public async Task<IActionResult> Create(RoleViewModel roleModel)
         {
             if (ModelState.IsValid)
             {
                 await roleService.CreateAsync(roleModel);
                 return RedirectToAction(nameof(Index));
             }
+
             return View(roleModel);
         }
 
         public async Task<IActionResult> Edit(Guid id)
         {
-            var role = await roleService.GetAsync(id);
+            var role = await roleService.GetViewModelAsync(id);
 
             return View(role);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, Role role)
+        public async Task<IActionResult> Edit(Guid id, RoleViewModel role)
         {
-            if (id != role.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 await roleService.UpdateAsync(role);
 
                 return RedirectToAction(nameof(Index));
             }
+
             return View(role);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var role = await roleService.GetAsync(id);
+            var role = await roleService.GetViewModelAsync(id);
             return View(role);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id, Role role)
+        public async Task<IActionResult> DeleteConfirmed(Guid id, RoleViewModel role)
         {
             await roleService.RemoveAsync(role);
 

@@ -39,16 +39,18 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateEmployeeViewModel employeeModel)
+        public async Task<IActionResult> Create(EmployeeViewModel employeeModel)
         {
             if (ModelState.IsValid)
             {
                 await employeeService.CreateAsync(employeeModel);
                 return RedirectToAction(nameof(Index));
             }
+
             return View(employeeModel);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
             var employee = await employeeService.GetAsync(id);
@@ -58,22 +60,19 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, Employee employee)
+        public async Task<IActionResult> Edit(Guid id, EmployeeViewModel employee)
         {
-            if (id != employee.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 await employeeService.UpdateAsync(employee);
 
                 return RedirectToAction(nameof(Index));
             }
+
             return View(employee);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
             var employee = await employeeService.GetAsync(id);
@@ -82,7 +81,7 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id, Employee employee)
+        public async Task<IActionResult> DeleteConfirmed(Guid id, EmployeeViewModel employee)
         {
             await employeeService.RemoveAsync(employee);
 

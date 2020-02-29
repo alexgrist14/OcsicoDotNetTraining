@@ -9,14 +9,18 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
     {
         Task<Employee> CreateAsync(string name);
 
-        Task<CreateEmployeeViewModel> CreateAsync(CreateEmployeeViewModel employeeModel);
+        Task<EmployeeViewModel> CreateAsync(EmployeeViewModel employeeModel);
 
         Task RemoveAsync(Employee employee);
 
+        Task RemoveAsync(EmployeeViewModel employeeModel);
+
         Task UpdateAsync(Employee employee);
+
+        Task UpdateAsync(EmployeeViewModel employeeModel);
 
         Task<List<Employee>> GetAsync();
 
-        Task<Employee> GetAsync(Guid id);
+        Task<EmployeeViewModel> GetAsync(Guid id);
     }
 }

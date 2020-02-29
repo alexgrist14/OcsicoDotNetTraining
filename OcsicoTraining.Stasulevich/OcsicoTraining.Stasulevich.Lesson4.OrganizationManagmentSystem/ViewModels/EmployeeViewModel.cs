@@ -1,10 +1,12 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagment.ViewModels
 {
-    public class CreateEmployeeViewModel
+    public class EmployeeViewModel
     {
-        [Required]
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
     }
 }

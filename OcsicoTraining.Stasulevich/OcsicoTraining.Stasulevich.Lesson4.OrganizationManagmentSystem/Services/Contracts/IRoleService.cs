@@ -9,14 +9,20 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
     {
         Task<Role> CreateAsync(string name);
 
-        Task<CreateRoleViewModel> CreateAsync(CreateRoleViewModel roleModel);
+        Task<RoleViewModel> CreateAsync(RoleViewModel roleModel);
 
         Task RemoveAsync(Role role);
 
+        Task RemoveAsync(RoleViewModel roleViewModel);
+
         Task UpdateAsync(Role role);
+
+        Task UpdateAsync(RoleViewModel roleViewModel);
 
         Task<List<Role>> GetAsync();
 
         Task<Role> GetAsync(Guid id);
+
+        Task<RoleViewModel> GetViewModelAsync(Guid id);
     }
 }

@@ -76,6 +76,5 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
 
             return View(model);
         }
-
     }
 }
