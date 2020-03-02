@@ -5,10 +5,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Localizer["OrganizationDetails"]</h1>
 
 <div>
-    <h4>Organization</h4>
+    <h4>@Localizer["OrganizationHeader"]</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -20,6 +20,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@Localizer["EditLink"]</a> |
+    <a asp-action="Index">@Localizer["BackToListLink"]</a>
 </div>

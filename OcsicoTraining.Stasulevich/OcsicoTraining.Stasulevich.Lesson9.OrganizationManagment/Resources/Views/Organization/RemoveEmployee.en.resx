@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BackToListLink" xml:space="preserve">
-    <value>Back to list</value>
+    <value>BackToList</value>
   </data>
-  <data name="EditLink" xml:space="preserve">
-    <value>Edit</value>
+  <data name="EmployeeHeader" xml:space="preserve">
+    <value>Employee</value>
   </data>
-  <data name="OrganizationDetails" xml:space="preserve">
-    <value>Details</value>
+  <data name="RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
   </data>
-  <data name="OrganizationHeader" xml:space="preserve">
-    <value>Organization</value>
+  <data name="RemoveEmployee" xml:space="preserve">
+    <value>Remove employee</value>
   </data>
 </root>

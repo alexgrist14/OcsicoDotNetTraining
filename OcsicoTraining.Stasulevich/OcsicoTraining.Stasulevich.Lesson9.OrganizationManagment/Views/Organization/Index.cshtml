@@ -5,9 +5,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Organizations</h1>
+<h1>@Localizer["OrganizationsHeader"]</h1>
 
-<a asp-action="Create">Create</a>
+<a asp-action="Create">@Localizer["CreateLink"]</a>
 <table class="table">
     <thead>
         <tr>
@@ -25,8 +25,8 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Employees" asp-route-id="@item.Id">Employees</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">@Localizer["DetailsLink"]</a> |
+                    <a asp-action="Employees" asp-route-id="@item.Id">@Localizer["EmployeesLink"]</a>
                 </td>
             </tr>
         }
