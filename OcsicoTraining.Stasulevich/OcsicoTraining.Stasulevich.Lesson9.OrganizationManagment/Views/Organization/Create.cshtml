@@ -1,4 +1,6 @@
 @model OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.ViewModels.CreateOrganizationViewModel
+@using OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Constants
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Create";
@@ -31,5 +33,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-

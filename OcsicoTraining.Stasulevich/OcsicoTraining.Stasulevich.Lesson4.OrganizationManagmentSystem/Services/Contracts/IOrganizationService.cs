@@ -23,6 +23,10 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contrac
 
         Task<Organization> GetAsync(Guid id);
 
+        Task<List<EmployeeOrganizationRole>> GetEmployeeRolesAsync(Guid organizationId);
+
         Task<List<Employee>> GetEmployeesAsync(Guid organizationId);
+
+        Task<List<EmployeeOrganizationRoleViewModel>> GetEmployeeRolesViewModelAsync(Guid organizationId);
     }
 }

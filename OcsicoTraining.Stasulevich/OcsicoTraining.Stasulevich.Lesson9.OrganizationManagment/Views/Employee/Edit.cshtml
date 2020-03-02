@@ -1,12 +1,14 @@
 @model OcsicoTraining.Stasulevich.Lesson4.OrganizationManagment.ViewModels.EmployeeViewModel
+@using OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Constants
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>@Localizer["EmployeeEdit"]</h1>
 
-<h4>Employee</h4>
+<h4>@Localizer["EmployeeHeader"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -26,9 +28,9 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToListLink"]</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync(ViewNames.ValidationScriptsPartialViewName);}
 }

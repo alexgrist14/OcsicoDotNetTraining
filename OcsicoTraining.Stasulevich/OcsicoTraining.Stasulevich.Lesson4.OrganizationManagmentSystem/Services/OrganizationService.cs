@@ -92,6 +92,13 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
         public async Task<List<Organization>> GetAsync() =>
             await organizationRepository.GetQuery().ToListAsync();
 
+        public async Task<List<OrganizationViewModel>> GetAllAsync()
+        {
+            var organizations = await GetAsync();
+
+            return organizations.Select(x => new OrganizationViewModel { Id = x.Id, Name = x.Name }).ToList();
+        }
+
         public async Task<Organization> GetAsync(Guid id) =>
             await organizationRepository.GetQuery().FirstOrDefaultAsync(e => e.Id == id);
 
@@ -103,6 +110,27 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem
                 .ToListAsync();
 
             return employees.ToList();
+        }
+
+        public async Task<List<EmployeeOrganizationRole>> GetEmployeeRolesAsync(Guid organizationId) =>
+            await employeeOrganizationRoleRepository
+                .GetQuery()
+                .Where(e => e.OrganizationId == organizationId)
+                .ToListAsync();
+
+        public async Task<List<EmployeeOrganizationRoleViewModel>> GetEmployeeRolesViewModelAsync(Guid organizationId)
+        {
+            var employeeRoles = await GetEmployeeRolesAsync(organizationId);
+
+            return employeeRoles
+                .Select(x =>
+                    new EmployeeOrganizationRoleViewModel
+                    {
+                        Employee = x.Employee,
+                        Organization = x.Organization,
+                        Role = x.Role
+                    })
+                .ToList();
         }
 
         private EmployeeOrganizationRole CreateEmployeeOrganizationRole(Guid organizationId, Guid employeeId,

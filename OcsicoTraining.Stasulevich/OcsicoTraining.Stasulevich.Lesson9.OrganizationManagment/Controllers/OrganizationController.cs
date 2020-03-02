@@ -52,6 +52,7 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
                 await organizationService.CreateAsync(organizationModel);
                 return RedirectToAction(nameof(Index));
             }
+
             return View(organizationModel);
         }
 

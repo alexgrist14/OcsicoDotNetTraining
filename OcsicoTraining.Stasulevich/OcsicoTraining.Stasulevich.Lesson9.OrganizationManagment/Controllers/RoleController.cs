@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Contracts;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.ViewModels;
 
@@ -20,6 +19,7 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
         public async Task<IActionResult> Index()
         {
             var roles = await roleService.GetAsync();
+
             return View(roles);
         }
 
@@ -75,12 +75,13 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             var role = await roleService.GetViewModelAsync(id);
+
             return View(role);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id, RoleViewModel role)
+        public async Task<IActionResult> Delete(Guid id, RoleViewModel role)
         {
             await roleService.RemoveAsync(role);
 

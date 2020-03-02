@@ -40,13 +40,10 @@ namespace OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Service
             await employeeRepository.AddAsync(employee);
             await dataContext.SaveChangesAsync();
 
-            return new EmployeeViewModel { Id = employee.Id, Name = employeeModel.Name };
+            return new EmployeeViewModel { Id = employee.Id, Name = employee.Name };
         }
 
         public async Task<List<Employee>> GetAsync() => await employeeRepository.GetQuery().ToListAsync();
-
-        //public async Task<Employee> GetAsync(Guid id) =>
-        //    await employeeRepository.GetQuery().FirstOrDefaultAsync(e => e.Id == id);
 
         public async Task<EmployeeViewModel> GetAsync(Guid id) =>
             await employeeRepository

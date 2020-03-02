@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagment.ViewModels;
-using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem;
 using OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Services.Contracts;
 
 namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
@@ -79,9 +78,9 @@ namespace OcsicoTraining.Stasulevich.Lesson9.OrganizationManagment.Controllers
             return View(employee);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id, EmployeeViewModel employee)
+        public async Task<IActionResult> Delete(Guid id, EmployeeViewModel employee)
         {
             await employeeService.RemoveAsync(employee);
 
