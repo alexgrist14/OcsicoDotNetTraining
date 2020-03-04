@@ -1,0 +1,34 @@
+@model IEnumerable<OcsicoTraining.Stasulevich.Lesson4.OrganizationManagmentSystem.Organization>
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Localizer["OrganizationsHeader"]</h1>
+
+<a asp-action="Create">@Localizer["CreateLink"]</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">@Localizer["DetailsLink"]</a> |
+                    <a asp-action="Employees" asp-route-id="@item.Id">@Localizer["EmployeesLink"]</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
