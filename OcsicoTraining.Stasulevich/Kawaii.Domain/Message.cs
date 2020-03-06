@@ -1,10 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Kawaii.Domain.Contracts;
+using Kawaii.Domain.Identity;
 
-namespace EntityModels
+namespace Kawaii.Domain
 {
-    public class Message
+    public class Message : IEntityModel<Guid>
     {
         public Guid Id { get; set; }
 

@@ -1,10 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Kawaii.Domain.Contracts;
+using Kawaii.Domain.Identity;
 
-namespace EntityModels
+namespace Kawaii.Domain
 {
-    public class Like
+    public class UserLike : IEntityModel<Guid>
     {
         public Guid Id { get; set; }
 
@@ -13,5 +13,7 @@ namespace EntityModels
         public Guid PostId { get; set; }
 
         public virtual User User { get; set; }
+
+        public virtual Post Post { get; set; }
     }
 }
