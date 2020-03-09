@@ -3,8 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.DataAccess.Repositories.Contracts;
+using Kawaii.Domain.Identity;
 using Kawaii.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using SocialNetwork.ViewModels;
 
 namespace Kawaii.BusinessLogic.Services
 {
@@ -25,13 +27,20 @@ namespace Kawaii.BusinessLogic.Services
                 .Select(x => new UserInfoViewModel { UserId = x.Id, Name = x.Name })
                 .FirstOrDefaultAsync(x => x.UserId == id);
 
-        public async Task<UserInfoViewModel> GetUserInfo(Guid userId)
+        public UserInfoViewModel GetUserInfo(Guid userId)
         {
-            var user = await userRepository.GetQuery().FirstOrDefaultAsync(x => x.Id == userId);
+            var user =  userRepository.GetQuery().FirstOrDefault(x => x.Id == userId);
 
             var userInfo = new UserInfoViewModel { Name = user.Name, FollowersCount = 0, FollowingsCount = 0 };
 
             return userInfo;
+        }
+
+        public User CreateUser(RegisterViewModel model)
+        {
+            var user = new User { Name = model.Name, Email = model.Email, UserName = model.Email, Year = model.Year };
+
+            return user;
         }
     }
 }

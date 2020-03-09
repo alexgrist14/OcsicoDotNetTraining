@@ -1,7 +1,34 @@
 @model Kawaii.ViewModels.UserInfoViewModel
 
-<div class="row user-info text-center">
+<div class="container">
+    <div class="row">
+        <div class="row user-info text-center">
 
-    <h2>@Model.Name</h2>
+            <img src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=NfkOPNbqRDAAX-6-upR&oh=02374559abde49e8f0dfb83bc246db7b&oe=5E90E8F1" class="profile-picture" />
 
+            <h2>@Model.Name</h2><br />
+
+        </div>
+
+        @*<div class="col-md-3 text-center" id="test">
+                <div class="row" style="background: white">
+                    <h2>Who to follow</h2>
+                    @await Component.InvokeAsync("ListOfUsers", new { viewModel = Model.WhoToFollow })
+                    <div style="margin: 10px;">
+                        <a asp-controller="Followers" asp-action="WhoToFollow" class="no-followers-btn" style="font-size: 20px;">Find More</a>
+                    </div>
+                </div>
+            </div>*@
+
+    </div>
+    <div class="row">
+        <div class="text-center vertical-menu">
+            <div class="side-menu-link">
+                <span>Followers: @Model.FollowersCount</span>
+            </div>
+            <div class="side-menu-link">
+                <span>Followings: @Model.FollowingsCount</span>
+            </div>
+        </div>
+    </div>
 </div>

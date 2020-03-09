@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EntityModels;
+using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.Domain.Identity;
 using Kawaii.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -13,13 +14,15 @@ namespace SocialNetwork.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IUserService userService;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IUserService userService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.userService = userService;
         }
 
         [HttpGet]

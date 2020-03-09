@@ -1,0 +1,46 @@
+@model Kawaii.ViewModels.UsersListViewModel
+
+@if (!Model.Users.Any())
+{
+    <div class="text-center">
+        <h3>
+            <span>No @Model.NoUsersWord <i class="fas fa-user-times"></i></span>
+            <div style="margin-top: 10px;">
+                <a asp-controller="Followers" asp-action="WhoToFollow" class="no-followers-btn">Find Some</a>
+            </div>
+        </h3>
+    </div>
+}
+else
+{
+    var users = Model.Users.ToList();
+    if (@Model.UsersCount != 0)
+    {
+        users = users.Take(@Model.UsersCount).ToList();
+    }
+
+    foreach (var user in users)
+    {
+        <div class="follower">
+            <div class="left-user-section">
+                <div class="user-name"><a asp-controller="Profiles" asp-action="Index" asp-route-userId="@user.Id"><strong>@user.UserName</strong></a></div>
+            </div>
+            <div class="right-user-section">
+                @if (user.UserName != this.User.Identity.Name)
+                {
+                    if (user.IsFollowingCurrentUser)
+                    {
+                        <button data-userid="@user.Id" class="unfollow">Unfollow</button>
+                    }
+                    else
+                    {
+                        <button data-userid="@user.Id">Follow</button>
+                    }
+                }
+            </div>
+        </div>
+
+    }
+
+}
+

@@ -1,0 +1,20 @@
+@model Kawaii.ViewModels.UsersListViewModel
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+@{
+    ViewData["Title"] = "WhoToFollow";
+}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 who-to-follow-wrapper">
+        <h2 class="text-center">Who to Follow</h2>
+
+        @await Component.InvokeAsync("ListOfUsers", new { viewModel = Model })
+
+    </div>
+</div>
+
+@Html.PagedListPager((IPagedList)Model.Users, pageNumber => Url.Action("WhoToFollow", new { pageNumber }))
+

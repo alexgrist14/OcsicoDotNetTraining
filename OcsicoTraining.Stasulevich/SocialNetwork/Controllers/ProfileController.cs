@@ -7,16 +7,19 @@ using Kawaii.Domain.Identity;
 using Kawaii.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SocialNetwork.Controllers
 {
     public class ProfileController : Controller
     {
         private readonly IUserService userService;
+        private readonly ISubscriptionsService subscriptionsService;
         private readonly UserManager<User> userManager;
 
-        public ProfileController(IUserService userService, UserManager<User> userManager)
+        public ProfileController(IUserService userService, ISubscriptionsService subscriptionsService, UserManager<User> userManager)
         {
+            this.subscriptionsService = subscriptionsService;
             this.userService = userService;
             this.userManager = userManager;
         }
@@ -26,15 +29,20 @@ namespace SocialNetwork.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> MyProfile()
+        [Authorize]
+        public IActionResult MyProfile()
         {
             var userId = new Guid(userManager.GetUserId(User));
 
+            var whoToFollowList = new UsersListViewModel()
+            {
+                Users = subscriptionsService.GetUsersToFollow(User).ToList(),
+            };
+
             var userInfoView = new MyProfileViewModel
             {
-
-                CurrentUserInfo = await userService.GetUserInfo(userId)
+                CurrentUserInfo = userService.GetUserInfo(userId),
+                WhoToFollow = whoToFollowList
 
             };
 
