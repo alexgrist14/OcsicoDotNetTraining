@@ -15,13 +15,13 @@ namespace SocialNetwork.Controllers
     public class UsersProfilesController : Controller
     {
         private readonly IUserService userService;
-        private readonly ISubscriptionsService subscriptionsService;
+        private readonly IFollowService followService;
         private readonly UserManager<User> userManager;
 
-        public UsersProfilesController(IUserService userService, ISubscriptionsService subscriptionsService, UserManager<User> userManager)
+        public UsersProfilesController(IUserService userService, IFollowService subscriptionsService, UserManager<User> userManager)
         {
             this.userService = userService;
-            this.subscriptionsService = subscriptionsService;
+            this.followService = subscriptionsService;
             this.userManager = userManager;
         }
 
@@ -35,10 +35,9 @@ namespace SocialNetwork.Controllers
                 return RedirectToAction("MyProfile", "Profile");
             }
 
-            //var currentUserId = userManager.GetUserId(User);
             var viewModel = new PostsFeedAndUserInfoViewModel()
             {
-                CurrentUserInfo = userService.GetUserInfo(userId),
+                CurrentUserInfo = userService.GetUserInfo(userId, currentUserId),
             };
 
             if(viewModel.CurrentUserInfo == null)

@@ -16,8 +16,9 @@ namespace SocialNetwork.Configurations
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IUserSubscriptionRepository, UserSubscriptionRepository>();
-            services.AddTransient<ISubscriptionsService, SubscriptionsService>();
+            services.AddTransient<IUserFollowRepository, UserFollowRepository>();
+            services.AddTransient<IFollowService, FollowService>();
+            services.AddTransient<ISearchService, SearchService>();
         }
     }
 }

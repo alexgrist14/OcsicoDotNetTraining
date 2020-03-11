@@ -14,5 +14,7 @@ namespace Kawaii.ViewModels
 
         public int FollowingsCount { get; set; }
 
+        public bool IsBeingFollowedByCurrentUser { get; set; }
+
     }
 }

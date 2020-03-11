@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>d9e45f06-2cb5-4288-9532-6ba59033de3d</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
@@ -17,14 +19,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="X.PagedList.Mvc.Core" Version="7.9.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Kawaii.BusinessLogic\Kawaii.BusinessLogic.csproj" />
     <ProjectReference Include="..\Kawaii.DataAccess\Kawaii.DataAccess.csproj" />
     <ProjectReference Include="..\Kawaii.Domain\Kawaii.Domain.csproj" />
     <ProjectReference Include="..\Kawaii.ViewModels\Kawaii.ViewModels.csproj" />
   </ItemGroup>
-
-
-
 </Project>

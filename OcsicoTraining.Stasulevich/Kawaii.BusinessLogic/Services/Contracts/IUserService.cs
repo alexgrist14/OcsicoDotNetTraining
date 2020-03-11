@@ -12,7 +12,7 @@ namespace Kawaii.BusinessLogic.Services.Contracts
     {
         Task<UserInfoViewModel> GetAsync(Guid id);
 
-        UserInfoViewModel GetUserInfo(Guid id);
+        UserInfoViewModel GetUserInfo(Guid userId, Guid currentUserId);
 
         User CreateUser(RegisterViewModel model);
     }

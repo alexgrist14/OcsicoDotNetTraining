@@ -12,9 +12,9 @@ namespace Kawaii.Domain.Identity
 
         public int Year { get; set; }
 
-        public virtual ICollection<UserSubscription> Subscriptions { get; set; }
+        public virtual ICollection<UserFollow> Followings { get; set; }
 
-        public virtual ICollection<UserSubscription> Followers { get; set; }
+        public virtual ICollection<UserFollow> Followers { get; set; }
 
         //public virtual ICollection<Message> Messages { get; set; }
 

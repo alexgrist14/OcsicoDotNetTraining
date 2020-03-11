@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
 
@@ -12,11 +13,11 @@ namespace SocialNetwork.Controllers
 {
     public class SubscriptionsController : Controller
     {
-        private readonly ISubscriptionsService subscriptionsService;
+        private readonly IFollowService followService;
 
-        public SubscriptionsController(ISubscriptionsService subscriptionsService)
+        public SubscriptionsController(IFollowService subscriptionsService)
         {
-            this.subscriptionsService = subscriptionsService;
+            this.followService = subscriptionsService;
         }
 
         public IActionResult WhoToFollow(int? page)
@@ -24,13 +25,14 @@ namespace SocialNetwork.Controllers
             var viewModel = new UsersListViewModel() { NoUsersWord = "mode users left to follow" };
             var pageNumber = page ?? 1;
             ViewBag.PageNum = pageNumber;
-            var usersToFollow = subscriptionsService.GetUsersToFollow(User);
+            var usersToFollow = followService.GetUsersToFollow(User);
 
             viewModel.Users = usersToFollow.ToPagedList(pageNumber, 10);
 
             return View(viewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult ChooseAction(Guid userId, string action)
         {
@@ -38,11 +40,11 @@ namespace SocialNetwork.Controllers
 
             if (action == "follow")
             {
-                subscriptionsService.Follow(userId, currentUserId);
+                followService.Follow(userId, currentUserId);
             }
             else if (action == "unfollow")
             {
-                subscriptionsService.Unfollow(userId, currentUserId);
+                followService.Unfollow(userId, currentUserId);
             }
             else
             {
@@ -55,7 +57,7 @@ namespace SocialNetwork.Controllers
         public IActionResult Followers(int? page)
         {
             var pageNumber = page ?? 1;
-            var followers = subscriptionsService.GetFollowers(User);
+            var followers = followService.GetFollowers(User);
 
             ViewBag.PageNum = pageNumber;
 
@@ -69,7 +71,7 @@ namespace SocialNetwork.Controllers
         public IActionResult Following(int? page)
         {
             var pageNumber = page ?? 1;
-            var followings = subscriptionsService.GetFollowings(User);
+            var followings = followService.GetFollowings(User);
             ViewBag.PageNum = pageNumber;
 
             var viewModel = new UsersListViewModel { Users = followings.ToPagedList(pageNumber, 10), NoUsersWord = "followings" };

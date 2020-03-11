@@ -10,6 +10,7 @@ namespace SocialNetwork.ViewComponents
     [ViewComponent(Name = "ListOfUsers")]
     public class ListOfUsersViewComponent : ViewComponent
     {
+        [HttpGet]
         public async Task<IViewComponentResult> InvokeAsync(UsersListViewModel viewModel)
         {
             if(viewModel == null)

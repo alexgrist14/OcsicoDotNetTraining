@@ -1,27 +1,38 @@
-﻿{
-  "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
-    "iisExpress": {
-      "applicationUrl": "http://localhost:52697",
-      "sslPort": 44318
-    }
-  },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+{
+   "iisSettings": {
+      "windowsAuthentication": false,
+      "anonymousAuthentication": true,
+      "iis": {
+         "applicationUrl": "http://kawaii.local"
+      },
+      "iisExpress": {
+         "applicationUrl": "http://localhost:52697",
+         "sslPort": 44318
       }
-    },
-    "SocialNetwork": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+   },
+   "profiles": {
+      "IIS Express": {
+         "commandName": "IISExpress",
+         "launchBrowser": true,
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
+      "SocialNetwork": {
+         "commandName": "Project",
+         "launchBrowser": true,
+         "applicationUrl": "https://localhost:5001;http://localhost:5000",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
+      "Local IIS": {
+         "commandName": "IIS",
+         "launchBrowser": true,
+         "launchUrl": "http://kawaii.local",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
       }
-    }
-  }
+   }
 }

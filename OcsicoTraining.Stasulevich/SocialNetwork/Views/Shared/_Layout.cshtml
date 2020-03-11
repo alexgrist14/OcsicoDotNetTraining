@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - SocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -28,6 +29,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="MyProfile">MyProfile</a>
                         </li>
                     </ul>
+                    <div class="search-bar">
+                        <form autocomplete="off" asp-controller="Search" asp-action="Index" method="get">
+                            <div class="autocomplete">
+                                <input type="text" name="searchText" placeholder="Search for users" id="myInput">
+                                <button type="submit"><img src="~/Images/search.png" /></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -46,6 +55,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/user.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

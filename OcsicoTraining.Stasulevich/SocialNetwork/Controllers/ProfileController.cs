@@ -14,12 +14,12 @@ namespace SocialNetwork.Controllers
     public class ProfileController : Controller
     {
         private readonly IUserService userService;
-        private readonly ISubscriptionsService subscriptionsService;
+        private readonly IFollowService followService;
         private readonly UserManager<User> userManager;
 
-        public ProfileController(IUserService userService, ISubscriptionsService subscriptionsService, UserManager<User> userManager)
+        public ProfileController(IUserService userService, IFollowService subscriptionsService, UserManager<User> userManager)
         {
-            this.subscriptionsService = subscriptionsService;
+            this.followService = subscriptionsService;
             this.userService = userService;
             this.userManager = userManager;
         }
@@ -30,18 +30,19 @@ namespace SocialNetwork.Controllers
         }
 
         [Authorize]
-        public IActionResult MyProfile()
+        [HttpGet]
+        public IActionResult MyProfile(MyProfileViewModel viewModel)
         {
             var userId = new Guid(userManager.GetUserId(User));
 
             var whoToFollowList = new UsersListViewModel()
             {
-                Users = subscriptionsService.GetUsersToFollow(User).ToList(),
+                Users = followService.GetUsersToFollow(User).ToList(),
             };
 
             var userInfoView = new MyProfileViewModel
             {
-                CurrentUserInfo = userService.GetUserInfo(userId),
+                CurrentUserInfo = userService.GetUserInfo(userId, userId),
                 WhoToFollow = whoToFollowList
 
             };
