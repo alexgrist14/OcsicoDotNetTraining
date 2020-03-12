@@ -20,18 +20,6 @@ namespace SocialNetwork.Controllers
             this.followService = subscriptionsService;
         }
 
-        public IActionResult WhoToFollow(int? page)
-        {
-            var viewModel = new UsersListViewModel() { NoUsersWord = "mode users left to follow" };
-            var pageNumber = page ?? 1;
-            ViewBag.PageNum = pageNumber;
-            var usersToFollow = followService.GetUsersToFollow(User);
-
-            viewModel.Users = usersToFollow.ToPagedList(pageNumber, 10);
-
-            return View(viewModel);
-        }
-
         [Authorize]
         [HttpPost]
         public IActionResult ChooseAction(Guid userId, string action)
@@ -68,7 +56,7 @@ namespace SocialNetwork.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Following(int? page)
+        public IActionResult Followings(int? page)
         {
             var pageNumber = page ?? 1;
             var followings = followService.GetFollowings(User);

@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Kawaii.Domain;
 using Kawaii.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -20,34 +21,28 @@ namespace Kawaii.DataAccess.Context
 
         private void ConfigureUser(ModelBuilder builder)
         {
-            //builder.Entity<User>().HasKey(x => x.Id);
-            //builder.Entity<User>().Property(x => x.Id)
-            //    .IsRequired()
-            //    .ValueGeneratedOnAdd();
-
             builder.Entity<User>().Property(x => x.Name)
                 .IsRequired();
-
             builder.Entity<User>().Property(x => x.Year)
                 .IsRequired();
 
+            builder.Entity<User>()
+                .HasOne(x => x.Wall)
+                .WithOne(x => x.User)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<User>().HasMany(x => x.Likes)
+                .WithOne(x => x.User)
+                .HasForeignKey(x => x.UserId);
 
-            //builder.Entity<UserLogin>().HasKey(x => x.Id);
-            //builder.Entity<UserLogin>().Property(x => x.Id).ValueGeneratedOnAdd();
-
+            builder.Entity<User>()
+                .HasOne(x => x.ProfileImage)
+                .WithOne(x => x.User)
+                .HasForeignKey<User>(x => x.ProfileImageId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder.Entity<UserRole>().HasKey(x => x.Id);
             builder.Entity<UserRole>().Property(x => x.Id).ValueGeneratedOnAdd();
-
-            //builder.Entity<UserToken>().HasKey(x => x.Id);
-            //builder.Entity<UserToken>().Property(x => x.Id).ValueGeneratedOnAdd();
-
-            //builder.Entity<UserClaim>().HasKey(x => x.Id);
-            //builder.Entity<UserClaim>().Property(x => x.Id).ValueGeneratedOnAdd();
-
-            //builder.Entity<RoleClaim>().HasKey(x => x.Id);
-            //builder.Entity<RoleClaim>().Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.Entity<User>().ToTable("Users");
             builder.Entity<Role>().ToTable("Roles");

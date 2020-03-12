@@ -112,37 +112,6 @@ namespace Kawaii.BusinessLogic.Services
 
         }
 
-        public IEnumerable<UserViewModel> GetUsersToFollow(ClaimsPrincipal user)
-        {
-            var currentUser = userManager.GetUserAsync(user).GetAwaiter().GetResult();
-            var allUsers = userRepository.GetQuery().Where(x => x.Id != currentUser.Id);
-            var usersViewsModels = allUsers.Select(x => new UserViewModel { Id = x.Id, UserName = x.Name }).Take(10).ToList();
-
-            if (usersViewsModels.Count == 0)
-            {
-                return null;
-            }
-
-            var currentUserFollowings = userFollowRepository.GetQuery().Where(x => x.FollowerId == currentUser.Id).ToList();
-
-            foreach (var followingUserId in currentUserFollowings)
-            {
-                var followingUser = userRepository.GetQuery().FirstOrDefault(x => x.Id == followingUserId.UserId);
-
-                if (followingUser == null)
-                {
-                    continue;
-                }
-                if (usersViewsModels.FirstOrDefault(x => x.Id == followingUser.Id) != null)
-                {
-                    usersViewsModels.RemoveAll(x => x.Id == followingUser.Id);
-                    continue;
-                }
-            }
-
-            return usersViewsModels;
-        }
-
         public bool IsBeingFollowedBy(Guid userToWollowId, Guid currentUserId)
         {
             var firstUser = userToWollowId;

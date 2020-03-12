@@ -35,16 +35,9 @@ namespace SocialNetwork.Controllers
         {
             var userId = new Guid(userManager.GetUserId(User));
 
-            var whoToFollowList = new UsersListViewModel()
-            {
-                Users = followService.GetUsersToFollow(User).ToList(),
-            };
-
             var userInfoView = new MyProfileViewModel
             {
-                CurrentUserInfo = userService.GetUserInfo(userId, userId),
-                WhoToFollow = whoToFollowList
-
+                UserInfo = userService.GetUserInfo(userId, userId),
             };
 
             return View(userInfoView);

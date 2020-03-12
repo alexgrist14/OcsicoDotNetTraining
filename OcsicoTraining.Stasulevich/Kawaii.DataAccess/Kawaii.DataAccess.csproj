@@ -13,6 +13,24 @@
     <Compile Remove="Context\Migrations\20200305114721_subscription.Designer.cs" />
     <Compile Remove="Migrations\20200306075314_subscriptions.cs" />
     <Compile Remove="Migrations\20200306075314_subscriptions.Designer.cs" />
+    <Compile Remove="Migrations\20200312090911_profile-images.cs" />
+    <Compile Remove="Migrations\20200312090911_profile-images.Designer.cs" />
+    <Compile Remove="Migrations\20200312091253_profile-images.cs" />
+    <Compile Remove="Migrations\20200312091253_profile-images.Designer.cs" />
+    <Compile Remove="Migrations\20200312091735_profile-images.cs" />
+    <Compile Remove="Migrations\20200312091735_profile-images.Designer.cs" />
+    <Compile Remove="Migrations\20200312092050_profile-images.cs" />
+    <Compile Remove="Migrations\20200312092050_profile-images.Designer.cs" />
+    <Compile Remove="Migrations\20200312092123_profile-images.cs" />
+    <Compile Remove="Migrations\20200312092123_profile-images.Designer.cs" />
+    <Compile Remove="Migrations\20200312105021_posts.cs" />
+    <Compile Remove="Migrations\20200312105021_posts.Designer.cs" />
+    <Compile Remove="Migrations\20200312105229_posts.cs" />
+    <Compile Remove="Migrations\20200312105229_posts.Designer.cs" />
+    <Compile Remove="Migrations\20200312105334_posts.cs" />
+    <Compile Remove="Migrations\20200312105334_posts.Designer.cs" />
+    <Compile Remove="Migrations\20200312110326_posts.cs" />
+    <Compile Remove="Migrations\20200312110326_posts.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,3 +8,7 @@ body {
 .unfollow{
     background: red;
 }
+
+.follow-container{
+    margin-left: 10px;
+}

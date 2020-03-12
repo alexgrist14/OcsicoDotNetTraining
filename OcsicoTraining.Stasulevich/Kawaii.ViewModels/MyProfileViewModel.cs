@@ -6,8 +6,6 @@ namespace Kawaii.ViewModels
 {
     public class MyProfileViewModel : PostsFeedAndUserInfoViewModel
     {
-        public UserInfoViewModel CurrentUserInfo { get; set; }
-
-        public UsersListViewModel WhoToFollow { get; set; }
+        public UserInfoViewModel UserInfo { get; set; }
     }
 }

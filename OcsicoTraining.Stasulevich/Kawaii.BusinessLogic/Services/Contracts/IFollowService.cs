@@ -13,8 +13,6 @@ namespace Kawaii.BusinessLogic.Services.Contracts
 
         Task Unfollow(Guid userToUnfollowId, Guid currentUserId);
 
-        IEnumerable<UserViewModel> GetUsersToFollow(ClaimsPrincipal user);
-
         ICollection<UserViewModel> GetFollowers(ClaimsPrincipal user);
 
         ICollection<UserViewModel> GetFollowings(ClaimsPrincipal user);

@@ -36,7 +36,7 @@ namespace SocialNetwork.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { Name = model.Name, Email = model.Email, UserName = model.Email, Year = model.Year };
+                var user = new User { Name = model.Name, Email = model.Email, UserName = model.Name, Year = model.Year };
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
