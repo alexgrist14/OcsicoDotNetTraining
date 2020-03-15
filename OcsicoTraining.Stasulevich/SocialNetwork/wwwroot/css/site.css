@@ -167,3 +167,18 @@ body {
 .username{
     color: #dadbdf;
 }
+.audio{
+    display:inline-block;
+    width:300px;
+    color: floralwhite;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    background-color: #272728;
+}
+.followers {
+   color: #dadbdf;
+}
+.search {
+   color: #dadbdf;
+}

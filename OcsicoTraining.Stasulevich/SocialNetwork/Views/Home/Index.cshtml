@@ -5,8 +5,11 @@
 
 @if (User.Identity.IsAuthenticated)
 {
+    <div>
+        <h2 style="color:azure;">Добро пожаловать в социальную сеть Kawaii</h2>
+    </div>
     <form method="post" asp-controller="Account" asp-action="Logout">
-        <input type="submit" value="Logout" />
+        <input type="submit" value="Выход" class="btn btn-light" />
     </form>
 }
 else

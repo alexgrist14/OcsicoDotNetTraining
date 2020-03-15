@@ -17,11 +17,11 @@
         <div class="follow" style="display: block">
             @if (Model.IsBeingFollowedByCurrentUser)
             {
-                <button data-userid="@Model.UserId" class="unfollow">Unfollow</button>
+                <button data-userid="@Model.UserId" class="unfollow btn">Unfollow</button>
             }
             else
             {
-                <button data-userid="@Model.UserId">Follow</button>
+                <button data-userid="@Model.UserId" class="btn btn-light">Follow</button>
             }
         </div>
     }

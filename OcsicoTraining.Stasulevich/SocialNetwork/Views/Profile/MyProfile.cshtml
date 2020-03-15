@@ -5,24 +5,104 @@
     ViewData["Title"] = "MyProfile";
 }
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <partial name="~/Views/Shared/Partials/_UserInfoPartial.cshtml" for="UserInfo" />
-            </div>
-            <div class="col-md-6 posts">
-                <a asp-controller="Posts" asp-action="Index" class="btn btn-light">Мои посты</a>
-                <a asp-controller="Posts" asp-action="Create" class="btn btn-light">Создать новый пост</a>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="~/Views/Shared/Partials/_UserInfoPartial.cshtml" for="UserInfo" />
         </div>
-        <div class="row follow-container">
-            <div class="text-center">
-                <div class="side-menu-link">
-                    <span><a asp-controller="Subscriptions" asp-action="Followers">Подписчики: </a>@Model.UserInfo.FollowersCount</span>
-                </div>
-                <div class="side-menu-link">
-                    <span><a asp-controller="Subscriptions" asp-action="Followings">Подписки: </a>@Model.UserInfo.FollowingsCount</span>
-                </div>
+        <div class="col-md-6 posts">
+            <a asp-controller="Posts" asp-action="Index" class="btn btn-light">Мои посты</a>
+            <a asp-controller="Posts" asp-action="Create" class="btn btn-light">Создать новый пост</a>
+        </div>
+    </div>
+    <div class="row follow-container">
+        <div class="text-center">
+            <div class="side-menu-link">
+                <span><a asp-controller="Subscriptions" asp-action="Followers">Подписчики: </a>@Model.UserInfo.FollowersCount</span>
+            </div>
+            <div class="side-menu-link">
+                <span><a asp-controller="Subscriptions" asp-action="Followings">Подписки: </a>@Model.UserInfo.FollowingsCount</span>
             </div>
         </div>
     </div>
+    <div class="row video">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="pause">
+                    <video id="my-video"
+                           class="video-js"
+                           controls
+                           preload="auto"
+                           width="640"
+                           height="264"
+                           poster="https://www.ivi.ru/titr/uploads/2015/06/18/efaac27e5f51a7786d296832e471b516.png/1400x0"
+                           data-setup="{}">
+                        <source src="~/Videos/15740002987080.mp4" type="video/mp4" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
+                    </video>
+                </div>
+                <div class="carousel-item" data-interval="pause">
+                    <video id="my-video"
+                           class="video-js"
+                           controls
+                           preload="auto"
+                           width="640"
+                           height="264"
+                           poster="https://pbs.twimg.com/profile_images/760052300572483584/EPxofcAB.jpg"
+                           data-setup="{}">
+                        <source src="~/Videos/15745442809531.mp4" type="video/mp4" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
+                    </video>
+                </div>
+                <div class="carousel-item" data-interval="pause">
+                    <video id="my-video"
+                           class="video-js"
+                           controls
+                           preload="auto"
+                           width="640"
+                           height="264"
+                           poster="https://img3.goodfon.com/wallpaper/nbig/a/fd/hotline-miami-drobovik-palmy.jpg"
+                           data-setup="{}">
+                        <source src="~/Videos/15782348002980.webm" type="video/webm" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
+                    </video>
+                </div>
+            </div>
+            <a class="carousel-control-prev carousel-a" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next carousel-a" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
+
+    </div>
+    <div class="audio">
+        Music Playlist
+        <audio id="player" controls>
+            <source src="~/Audio/I_Cant_Get_No_Sleep.mp3" type="audio/mp3" />
+        </audio>
+        <audio id="player" controls>
+            <source src="~/Audio/M.O.O.N - Dust - 4448.mp3" type="audio/mp3" />
+        </audio>
+        <audio id="player" controls>
+            <source src="~/Audio/Shanti People - Tandava.mp3" type="audio/mp3" />
+        </audio>
+    </div>
+</div>
+

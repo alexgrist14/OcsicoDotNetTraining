@@ -6,7 +6,7 @@
     ViewData["Title"] = "Followings";
 }
 
-<div class="row">
+<div class="row followers">
     <div class="col-md-6 col-md-offset-3 who-to-follow-wrapper">
         <h2 class="text-center">Подписок - @ViewData["FollowingsCount"]</h2>
         @await Component.InvokeAsync("ListOfUsers", new { viewModel = Model })

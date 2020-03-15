@@ -3,16 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SocialNetwork</title>
+    <title>@ViewData["Title"] - Kawaii</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="position:absolute; left:50px">SocialNetwork</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="position:absolute; left:50px">Kawaii</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,8 +33,8 @@
                     <div class="search-container">
                         <form autocomplete="off form-inline" asp-controller="Search" asp-action="Index" method="get">
                             <div class="autocomplete">
-                                <input class="form-control mr-sm-2" type="text" name="searchText" placeholder="Search for users" id="myInput">
-                                <button class="btn btn-dark btn-outline-light" type="submit">Search</button>
+                                <input class="form-control mr-sm-2" type="text" name="searchText" placeholder="Поиск юзеров" id="myInput">
+                                <button class="btn btn-dark btn-outline-light" type="submit">Поиск</button>
                             </div>
                         </form>
                     </div>

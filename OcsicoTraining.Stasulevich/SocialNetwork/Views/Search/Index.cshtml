@@ -4,20 +4,12 @@
     ViewData["Title"] = "Search";
 }
 
-<h2>Results for: "@Model.SearchText"</h2>
+<h2 style="color: #dadbdf;">Результат поиска: "@Model.SearchText"</h2>
 
-<div class="row">
+<div class="row search">
     <div class="col-md-6 col-md-offset-3 who-to-follow-wrapper">
-        <h2>Users</h2>
+        <h2>Пользователи</h2>
         @await Component.InvokeAsync("ListOfUsers", new { viewModel = Model.Users })
     </div>
 </div>
-
-@section Scripts{
-    <script>$(document).ready(function () {
-            $("#comment-button").click(function () {
-                $(".write-comment").css("display", "flex");
-            });
-        });</script>
-}
 
