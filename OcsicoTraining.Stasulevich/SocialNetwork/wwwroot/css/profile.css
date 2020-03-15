@@ -9,6 +9,14 @@ body {
     background: red;
 }
 
-.follow-container{
-    margin-left: 10px;
+.follow-container {
+   margin-left: 10px;
+   color: #c8d4fe;
+}
+.follow-container a{
+   color: #8f9bb0;
+}
+
+.profile-picture{
+    height:200px;
 }

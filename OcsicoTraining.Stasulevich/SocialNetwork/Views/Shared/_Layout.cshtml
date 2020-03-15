@@ -5,35 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SocialNetwork</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="position:absolute; left:50px">SocialNetwork</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 right-buttons-container">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="News" asp-action="Index">Новости</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="MyProfile">MyProfile</a>
+                        <li class="nav-item" style="width:120px">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Profile" asp-action="MyProfile">Мой профиль</a>
                         </li>
                     </ul>
-                    <div class="search-bar">
-                        <form autocomplete="off" asp-controller="Search" asp-action="Index" method="get">
+                    <div class="search-container">
+                        <form autocomplete="off form-inline" asp-controller="Search" asp-action="Index" method="get">
                             <div class="autocomplete">
-                                <input type="text" name="searchText" placeholder="Search for users" id="myInput">
-                                <button type="submit"><img src="~/Images/search.png" /></button>
+                                <input class="form-control mr-sm-2" type="text" name="searchText" placeholder="Search for users" id="myInput">
+                                <button class="btn btn-dark btn-outline-light" type="submit">Search</button>
                             </div>
                         </form>
                     </div>
@@ -42,20 +42,24 @@
         </nav>
     </header>
     <div class="container">
+        <div class="alert alert-success hidden" id="success-alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <p id="title"></p>
+            <p id="text"></p>
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - SocialNetwork - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/user.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/news.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

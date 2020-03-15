@@ -11,6 +11,10 @@
 }
 else
 {
-    <a asp-controller="Account" asp-action="Login">Log in</a>
-    <a asp-controller="Account" asp-action="Register">Register</a>
+    <div class="authorize">
+        <div class="l-r-container">
+            <a class="login" asp-controller="Account" asp-action="Login">Log In</a>
+            <a class="register" asp-controller="Account" asp-action="Register">Register</a>
+        </div>
+    </div>
 }

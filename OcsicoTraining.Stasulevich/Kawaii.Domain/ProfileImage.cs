@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Kawaii.Domain.Contracts;
 using Kawaii.Domain.Identity;
 

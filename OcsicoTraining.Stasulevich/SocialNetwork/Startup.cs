@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetwork.Configurations;
+using SocialNetwork.Infrastructure.Hubs;
 
 namespace SocialNetwork
 {
@@ -27,17 +28,10 @@ namespace SocialNetwork
             services.AddIdentity<User,Role>()
                 .AddEntityFrameworkStores<ApplicationContext>();
 
-
             services.AddHttpContextAccessor();
             services.ConfigureDataContext(Configuration);
             services.ConfigureDependencies();
-
-            //services.AddAuthentication().AddFacebook(facebookOptions =>
-            //{
-            //    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-            //    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            //});
-
+            services.AddSignalR();
             services.AddControllersWithViews();
         }
 
@@ -67,6 +61,7 @@ namespace SocialNetwork
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<NewsHub>("/newsHub");
             });
         }
     }

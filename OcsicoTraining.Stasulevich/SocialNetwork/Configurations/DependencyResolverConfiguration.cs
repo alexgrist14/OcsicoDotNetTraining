@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Kawaii.BusinessLogic.Services;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.DataAccess.Repositories;
@@ -19,6 +15,10 @@ namespace SocialNetwork.Configurations
             services.AddTransient<IUserFollowRepository, UserFollowRepository>();
             services.AddTransient<IFollowService, FollowService>();
             services.AddTransient<ISearchService, SearchService>();
+            services.AddTransient<INewsRepository, NewsRepository>();
+            services.AddTransient<INewsService, NewsService>();
+            services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<IPostService, PostService>();
         }
     }
 }

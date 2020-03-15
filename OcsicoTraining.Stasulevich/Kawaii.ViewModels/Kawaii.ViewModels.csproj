@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kawaii.Domain\Kawaii.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

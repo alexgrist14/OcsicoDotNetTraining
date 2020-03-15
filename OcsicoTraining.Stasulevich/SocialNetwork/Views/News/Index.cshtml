@@ -1,9 +1,26 @@
+@model IEnumerable<Kawaii.ViewModels.NewsViewModel>
 
-@model string
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Response</h1>
-<p>@Model</p>
-
+@if (!Model.Any())
+{
+    <div class="news" class="text-center">
+        <p>Новостей ещё нет.</p>
+    </div>
+}
+else
+{
+    var news= Model.ToList();
+    foreach (var item in news)
+    {
+        <div class="news" class="post">
+            <div class="left-user-section">
+                <h2>@item.Title</h2>
+                <p>@item.Text</p>
+            </div>
+        </div>
+    }
+}
+<img src="https://uznayvse.ru/images/content/2017/8/uzn_15033098141.jpg" />

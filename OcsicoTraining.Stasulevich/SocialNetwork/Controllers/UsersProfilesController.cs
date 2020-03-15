@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.Domain.Identity;
 using Kawaii.ViewModels;
@@ -40,7 +37,7 @@ namespace SocialNetwork.Controllers
                 CurrentUserInfo = userService.GetUserInfo(userId, currentUserId),
             };
 
-            if(viewModel.CurrentUserInfo == null)
+            if (viewModel.CurrentUserInfo == null)
             {
                 var result = View("Error", ModelState);
                 result.StatusCode = (int)HttpStatusCode.NotFound;

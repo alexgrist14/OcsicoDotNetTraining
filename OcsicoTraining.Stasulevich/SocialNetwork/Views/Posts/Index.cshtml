@@ -1,0 +1,25 @@
+@model IEnumerable<Kawaii.ViewModels.PostViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (!Model.Any())
+{
+    <div class="text-center post">
+        <p>У вас нет постов <img class="w-25 p-3" src="~/Images/bible-tump.png" /></p>
+    </div>
+}
+else
+{
+     var posts = Model.ToList();
+    foreach (var post in posts)
+    {
+        <div class="post">
+            <div class="left-user-section">
+                <div><strong>@post.Content</strong></div>
+            </div>
+        </div>
+    }
+}
+

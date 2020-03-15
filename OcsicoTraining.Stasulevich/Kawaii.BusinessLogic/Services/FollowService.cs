@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.DataAccess.Context.Contracts;
@@ -17,19 +16,16 @@ namespace Kawaii.BusinessLogic.Services
 {
     public class FollowService : IFollowService
     {
-        private readonly IUserRepository userRepository;
         private readonly IUserFollowRepository userFollowRepository;
         private readonly IDataContext dataContext;
         private readonly UserManager<User> userManager;
 
         public FollowService(
-            IUserRepository userRepository,
-            IUserFollowRepository userSubscriptionRepository,
+            IUserFollowRepository userFollowRepository,
             IDataContext dataContext,
             UserManager<User> userManager)
         {
-            this.userRepository = userRepository;
-            this.userFollowRepository = userSubscriptionRepository;
+            this.userFollowRepository = userFollowRepository;
             this.userManager = userManager;
             this.dataContext = dataContext;
         }
@@ -50,7 +46,6 @@ namespace Kawaii.BusinessLogic.Services
             await userFollowRepository.AddAsync(userSubscription);
             await dataContext.SaveChangesAsync();
         }
-
 
         public async Task Unfollow(Guid userToUnfollowId, Guid currentUserId)
         {
@@ -82,7 +77,9 @@ namespace Kawaii.BusinessLogic.Services
                 .Select(x => x.Follower)
                 .ToList();
 
-            var followersViewModels = followers.Select(x => new UserViewModel { Id = x.Id, UserName = x.Name }).ToList();
+            var followersViewModels = followers
+                .Select(x => new UserViewModel { Id = x.Id, UserName = x.Name })
+                .ToList();
 
             foreach (var follower in followersViewModels)
             {
@@ -101,7 +98,9 @@ namespace Kawaii.BusinessLogic.Services
                 .Select(x => x.User)
                 .ToList();
 
-            var followingsViewsModels = followings.Select(x => new UserViewModel { Id = x.Id, UserName = x.Name }).ToList();
+            var followingsViewsModels = followings
+                .Select(x => new UserViewModel { Id = x.Id, UserName = x.Name })
+                .ToList();
 
             foreach (var following in followingsViewsModels)
             {
@@ -109,7 +108,6 @@ namespace Kawaii.BusinessLogic.Services
             }
 
             return followingsViewsModels;
-
         }
 
         public bool IsBeingFollowedBy(Guid userToWollowId, Guid currentUserId)
@@ -117,7 +115,9 @@ namespace Kawaii.BusinessLogic.Services
             var firstUser = userToWollowId;
             var secondUser = currentUserId;
 
-            return userFollowRepository.GetQuery().FirstOrDefault(x => x.UserId == firstUser && x.FollowerId == secondUser) != null;
+            return userFollowRepository
+                .GetQuery()
+                .FirstOrDefault(x => x.UserId == firstUser && x.FollowerId == secondUser) != null;
         }
     }
 }

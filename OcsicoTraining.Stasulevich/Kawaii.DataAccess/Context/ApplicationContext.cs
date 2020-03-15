@@ -1,8 +1,6 @@
 using System;
 using System.Reflection;
-using Kawaii.Domain;
 using Kawaii.Domain.Identity;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,15 +25,6 @@ namespace Kawaii.DataAccess.Context
                 .IsRequired();
 
             builder.Entity<User>()
-                .HasOne(x => x.Wall)
-                .WithOne(x => x.User)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<User>().HasMany(x => x.Likes)
-                .WithOne(x => x.User)
-                .HasForeignKey(x => x.UserId);
-
-            builder.Entity<User>()
                 .HasOne(x => x.ProfileImage)
                 .WithOne(x => x.User)
                 .HasForeignKey<User>(x => x.ProfileImageId)
@@ -51,7 +40,6 @@ namespace Kawaii.DataAccess.Context
             builder.Entity<UserLogin>().ToTable("UserLogins");
             builder.Entity<RoleClaim>().ToTable("RoleClaims");
             builder.Entity<UserToken>().ToTable("UserTokens");
-            //builder.Entity<IdentityUserRole<Guid>>().ToTable("IdentityUserRole");
         }
     }
 }

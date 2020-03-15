@@ -13,9 +13,6 @@ namespace Kawaii.DataAccess.Context.Configurations
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
-            //builder.HasKey(x => new { x.UserId, x.FollowerId });
-            
-
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Followings)
                 .HasForeignKey(x => x.UserId)

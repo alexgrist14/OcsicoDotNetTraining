@@ -1,13 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.Domain.Identity;
 using Kawaii.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 
 namespace SocialNetwork.Controllers
 {
@@ -31,7 +28,7 @@ namespace SocialNetwork.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult MyProfile(MyProfileViewModel viewModel)
+        public IActionResult MyProfile()
         {
             var userId = new Guid(userManager.GetUserId(User));
 

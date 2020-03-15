@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kawaii.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200312111812_posts")]
-    partial class posts
+    [Migration("20200314134737_new_post")]
+    partial class new_post
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,9 +117,6 @@ namespace Kawaii.DataAccess.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("WallId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
@@ -128,10 +125,6 @@ namespace Kawaii.DataAccess.Migrations
                     b.HasIndex("ProfileImageId")
                         .IsUnique()
                         .HasFilter("[ProfileImageId] IS NOT NULL");
-
-                    b.HasIndex("WallId")
-                        .IsUnique()
-                        .HasFilter("[WallId] IS NOT NULL");
 
                     b.ToTable("Users");
                 });
@@ -220,6 +213,26 @@ namespace Kawaii.DataAccess.Migrations
                     b.ToTable("UserTokens");
                 });
 
+            modelBuilder.Entity("Kawaii.Domain.News", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsSuccess")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News");
+                });
+
             modelBuilder.Entity("Kawaii.Domain.Post", b =>
                 {
                     b.Property<Guid>("Id")
@@ -229,17 +242,15 @@ namespace Kawaii.DataAccess.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
-                    b.Property<Guid>("WallId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("WallId");
 
                     b.ToTable("Posts");
                 });
@@ -287,52 +298,12 @@ namespace Kawaii.DataAccess.Migrations
                     b.ToTable("Followings");
                 });
 
-            modelBuilder.Entity("Kawaii.Domain.UserLike", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UsersLikes");
-                });
-
-            modelBuilder.Entity("Kawaii.Domain.Wall", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Walls");
-                });
-
             modelBuilder.Entity("Kawaii.Domain.Identity.User", b =>
                 {
                     b.HasOne("Kawaii.Domain.ProfileImage", "ProfileImage")
                         .WithOne("User")
                         .HasForeignKey("Kawaii.Domain.Identity.User", "ProfileImageId")
                         .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("Kawaii.Domain.Wall", "Wall")
-                        .WithOne("User")
-                        .HasForeignKey("Kawaii.Domain.Identity.User", "WallId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Kawaii.Domain.Post", b =>
@@ -340,13 +311,7 @@ namespace Kawaii.DataAccess.Migrations
                     b.HasOne("Kawaii.Domain.Identity.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Kawaii.Domain.Wall", "Wall")
-                        .WithMany("Posts")
-                        .HasForeignKey("WallId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -367,21 +332,6 @@ namespace Kawaii.DataAccess.Migrations
                     b.HasOne("Kawaii.Domain.Identity.User", null)
                         .WithMany("Followers")
                         .HasForeignKey("UserId1");
-                });
-
-            modelBuilder.Entity("Kawaii.Domain.UserLike", b =>
-                {
-                    b.HasOne("Kawaii.Domain.Post", "Post")
-                        .WithMany("Likes")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Kawaii.Domain.Identity.User", "User")
-                        .WithMany("Likes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using Kawaii.BusinessLogic.Services.Contracts;
 using Kawaii.DataAccess.Repositories.Contracts;
 using Kawaii.Domain.Identity;
@@ -17,7 +15,10 @@ namespace Kawaii.BusinessLogic.Services
         private readonly IFollowService followService;
         private readonly UserManager<User> userManager;
 
-        public SearchService(IUserRepository userRepository, IFollowService followService, UserManager<User> userManager)
+        public SearchService(
+            IUserRepository userRepository,
+            IFollowService followService,
+            UserManager<User> userManager)
         {
             this.userRepository = userRepository;
             this.followService = followService;
@@ -34,10 +35,10 @@ namespace Kawaii.BusinessLogic.Services
 
             var users = userRepository.GetQuery()
                 .Where(x => x.Name.Contains(searchText))
-                .Select(x => new UserViewModel { Id = x.Id, UserName = x.Name})
+                .Select(x => new UserViewModel { Id = x.Id, UserName = x.Name })
                 .ToList();
 
-            foreach(var user in users)
+            foreach (var user in users)
             {
                 user.IsFollowingCurrentUser = followService.IsBeingFollowedBy(user.Id, currentUserId);
             }

@@ -10,14 +10,18 @@
             <div class="col-md-3">
                 <partial name="~/Views/Shared/Partials/_UserInfoPartial.cshtml" for="UserInfo" />
             </div>
+            <div class="col-md-6 posts">
+                <a asp-controller="Posts" asp-action="Index" class="btn btn-light">Мои посты</a>
+                <a asp-controller="Posts" asp-action="Create" class="btn btn-light">Создать новый пост</a>
+            </div>
         </div>
         <div class="row follow-container">
             <div class="text-center">
                 <div class="side-menu-link">
-                    <span><a asp-controller="Subscriptions" asp-action="Followers">Followers: </a>@Model.UserInfo.FollowersCount</span>
+                    <span><a asp-controller="Subscriptions" asp-action="Followers">Подписчики: </a>@Model.UserInfo.FollowersCount</span>
                 </div>
                 <div class="side-menu-link">
-                    <span><a asp-controller="Subscriptions" asp-action="Followings">Followings: </a>@Model.UserInfo.FollowingsCount</span>
+                    <span><a asp-controller="Subscriptions" asp-action="Followings">Подписки: </a>@Model.UserInfo.FollowingsCount</span>
                 </div>
             </div>
         </div>

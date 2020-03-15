@@ -2,7 +2,7 @@
 
 namespace Kawaii.DataAccess.Migrations
 {
-    public partial class img : Migration
+    public partial class news_update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

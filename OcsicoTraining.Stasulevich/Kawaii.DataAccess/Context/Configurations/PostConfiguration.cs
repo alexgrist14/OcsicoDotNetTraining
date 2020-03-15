@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Kawaii.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -16,9 +13,8 @@ namespace Kawaii.DataAccess.Context.Configurations
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
-            builder.HasMany(x => x.Likes)
-                .WithOne(x => x.Post)
-                .HasForeignKey(x => x.PostId)
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.Posts)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("Posts");
